@@ -1,0 +1,23 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Godot-specific
+.import/
+.export/
+export_presets.cfg
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+
+# Ignorar builds exportados:
+build/
+bin/
+
+# Personal settings (comentado porque às vezes você quer versionar)
+.godot/editor_settings-3.tres
