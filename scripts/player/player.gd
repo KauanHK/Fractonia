@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const VELOCIDADE = 300.0
+const VELOCIDADE = 200.0
 
 func _process(delta: float) -> void:
 	
@@ -13,5 +13,8 @@ func _process(delta: float) -> void:
 	
 	if velocity.x != 0:
 		$Sprite2D.flip_h = velocity.x > 0
+	
+	global_position.x = clamp(global_position.x, 0, 1580)
+	global_position.y = clamp(global_position.y, 0, 847)
 	
 	move_and_slide()
