@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bchj82guls5ht"]
+[gd_scene load_steps=5 format=3 uid="uid://bchj82guls5ht"]
 
 [ext_resource type="Texture2D" uid="uid://crgjt5ekvc4ax" path="res://assets/sprites/cenario1.jpeg" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://c5vts6g2yd0kg" path="res://scenes/player/player.tscn" id="2_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://d0xaaltx426xc" path="res://scenes/arvore/arvore.tscn" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://du6e3fk2jpmp3" path="res://scenes/arvore2/arvore2.tscn" id="4_6m72w"]
 
 [node name="World" type="Node2D"]
 
@@ -10,6 +12,7 @@ texture = ExtResource("1_sl2e5")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("2_1fp7r")]
+position = Vector2(575, 226)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.5, 1.5)
@@ -17,3 +20,9 @@ limit_left = 0
 limit_top = 0
 limit_right = 1580
 limit_bottom = 847
+
+[node name="Arvore" parent="." instance=ExtResource("3_1fp7r")]
+position = Vector2(660, 276)
+
+[node name="Arvore2" parent="." instance=ExtResource("4_6m72w")]
+position = Vector2(790, 389)

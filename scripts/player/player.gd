@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	velocity = direcao * VELOCIDADE
 	
 	if velocity.x != 0:
-		$Sprite2D.flip_h = velocity.x > 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
 	
 	global_position.x = clamp(global_position.x, 0, 1580)
 	global_position.y = clamp(global_position.y, 0, 847)
