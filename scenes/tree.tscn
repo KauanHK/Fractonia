@@ -1,20 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://on0nw74rlplm"]
+[gd_scene load_steps=6 format=3 uid="uid://on0nw74rlplm"]
 
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_avsvi"]
+[ext_resource type="AudioStream" uid="uid://hxv3svfwkg67" path="res://assets/sounds/coin.wav" id="2_viusy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vplca"]
+[sub_resource type="GDScript" id="GDScript_vplca"]
+script/source = "extends Area2D
+
+var is_player_in: bool = false
+var health: int = 3
+
+
+func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed(\"brake_tree\") and is_player_in:
+		health -= 1
+		print(health)
+	
+	if health <= 0:
+		queue_free()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	is_player_in = true
+
+
+func _on_body_exited(body: Node2D) -> void:
+	is_player_in = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viusy"]
 atlas = ExtResource("1_avsvi")
 region = Rect2(0, 48, 16, 48)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_viusy"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_viusy"]
+size = Vector2(14.5, 59)
 
-[node name="Tree" type="Sprite2D"]
-position = Vector2(0, -24)
-texture = SubResource("AtlasTexture_vplca")
+[node name="Tree" type="Area2D"]
+collision_mask = 2
+script = SubResource("GDScript_vplca")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_viusy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 17)
-shape = SubResource("CircleShape2D_viusy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0.5)
+shape = SubResource("RectangleShape2D_viusy")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_viusy")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
