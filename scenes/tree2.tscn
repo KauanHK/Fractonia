@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://coq1xrkcg12dj"]
+[gd_scene load_steps=6 format=3 uid="uid://coq1xrkcg12dj"]
 
 [ext_resource type="Script" uid="uid://dnmrj60kjsjjh" path="res://scripts/tree_2.gd" id="1_62k3r"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_hyyiy"]
@@ -26,7 +26,7 @@ position = Vector2(8, -33.5)
 shape = SubResource("RectangleShape2D_nqj0n")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAEAAAADAAgAAAAAAAAAAAADAAcAAAAAAP//AAACAAgAAAAAAP7/AAACAAgAAAAAAP3/AAACAAgAAAAAAPz/AAACAAgAAAAAAPv/AAACAAgAAAAAAPn/AAACAAQAAAA=")
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 7, 0, 0, 0, 0, 0, 255, 255, 0, 0, 2, 0, 8, 0, 0, 0, 0, 0, 253, 255, 0, 0, 2, 0, 4, 0, 0, 0)
 tile_set = SubResource("TileSet_nqj0n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

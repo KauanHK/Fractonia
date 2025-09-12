@@ -90,13 +90,13 @@ shape = SubResource("WorldBoundaryShape2D_cn5tm")
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("4_28cek")]
-position = Vector2(73, 68)
+position = Vector2(75, 53)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("4_28cek")]
-position = Vector2(217, 69)
+position = Vector2(220, 82)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("4_28cek")]
-position = Vector2(232, 69)
+position = Vector2(283, 69)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("4_28cek")]
 position = Vector2(104, -44)
