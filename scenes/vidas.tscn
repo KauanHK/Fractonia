@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://csl5gpxmjfqvf"]
+
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_sv35g"]
+
+[node name="Vidas" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -113.0
+offset_top = -41.0
+offset_right = -56.0
+offset_bottom = -28.0
+theme_override_fonts/font = ExtResource("1_sv35g")
+theme_override_font_sizes/font_size = 8
+text = "Vidas: ?"
