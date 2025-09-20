@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtf72a8mpaucd"]
+
+[ext_resource type="Script" uid="uid://btsi38dcbjail" path="res://scripts/pause.gd" id="1_f1d2v"]
+
+[node name="Pause" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_f1d2v")
+
+[node name="Continuar" type="Button" parent="."]
+offset_left = 528.0
+offset_top = 206.0
+offset_right = 614.0
+offset_bottom = 237.0
+text = "Continuar"
+
+[node name="Menu" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 276.0
+offset_right = 597.0
+offset_bottom = 307.0
+text = "Menu"
+
+[connection signal="pressed" from="Continuar" to="." method="_on_continuar_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

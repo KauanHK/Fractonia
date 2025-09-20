@@ -4,4 +4,5 @@ extends Area2D
 signal selecionou_alternativa
 
 func _on_body_entered(body: Node2D) -> void:
-	emit_signal('selecionou_alternativa', resposta_correta)
+	print('ok')
+	selecionou_alternativa.emit(resposta_correta)

@@ -1,14 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://cea34d6eu8anx"]
 
-[ext_resource type="PackedScene" uid="uid://dqjyhhjufkjc8" path="res://scenes/map.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://dlvmpie5n4eef" path="res://scenes/menu.tscn" id="4_iywne"]
 [ext_resource type="Script" uid="uid://dod7bhxg2qu07" path="res://scripts/game.gd" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4_lbhrr")
 
-[node name="Map" parent="." instance=ExtResource("1_yqjtg")]
-position = Vector2(92, 63)
+[node name="Menu" parent="." instance=ExtResource("4_iywne")]
 
-[node name="Player" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(-72, 25)
+[node name="Pause" parent="." instance=ExtResource("5_iywne")]
+process_mode = 3
+
+[connection signal="iniciar_fase" from="Menu" to="." method="_on_menu_iniciar_fase"]
+[connection signal="pause" from="Pause" to="." method="_on_pause"]
+[connection signal="pause_button_pressed" from="Pause" to="." method="_on_pause_button_pressed"]

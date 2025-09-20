@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dfjcnandsc1j1" path="res://scripts/alternativa.gd" id="3_d5h0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjec6"]
-size = Vector2(14, 28)
+size = Vector2(14, 15)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_py15m"]
 texture = ExtResource("1_fjec6")
@@ -30,11 +30,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_py15m")
 
 [node name="Alternativa" type="Area2D"]
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("3_d5h0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -2)
+position = Vector2(8, -6.5)
 shape = SubResource("RectangleShape2D_fjec6")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
