@@ -1,17 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cea34d6eu8anx"]
+[gd_scene load_steps=3 format=3 uid="uid://cea34d6eu8anx"]
 
 [ext_resource type="PackedScene" uid="uid://dlvmpie5n4eef" path="res://scenes/menu.tscn" id="4_iywne"]
 [ext_resource type="Script" uid="uid://dod7bhxg2qu07" path="res://scripts/game.gd" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4_lbhrr")
 
 [node name="Menu" parent="." instance=ExtResource("4_iywne")]
 
-[node name="Pause" parent="." instance=ExtResource("5_iywne")]
-process_mode = 3
-
 [connection signal="iniciar_fase" from="Menu" to="." method="_on_menu_iniciar_fase"]
-[connection signal="pause" from="Pause" to="." method="_on_pause"]
-[connection signal="pause_button_pressed" from="Pause" to="." method="_on_pause_button_pressed"]

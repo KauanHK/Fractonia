@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://dqjyhhjufkjc8"]
+[gd_scene load_steps=10 format=4 uid="uid://dqjyhhjufkjc8"]
 
+[ext_resource type="Script" uid="uid://bavu1qhfwe2rf" path="res://scripts/map.gd" id="1_2lpho"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_4xfga"]
 [ext_resource type="PackedScene" uid="uid://ctviyoqq6o4dy" path="res://scenes/tree.tscn" id="2_paxxb"]
 [ext_resource type="PackedScene" uid="uid://ck8nv5laf4faf" path="res://scenes/alternativa.tscn" id="3_gldc4"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="4_0cso3"]
-[ext_resource type="Script" uid="uid://eymy47gqydnk" path="res://scripts/vidas.gd" id="5_2klcf"]
+[ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/GameOverScreen.tscn" id="6_2lpho"]
+[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="7_nakos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_paxxb"]
 texture = ExtResource("1_4xfga")
@@ -162,6 +164,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_paxxb")
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_2lpho")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(400, 500)
@@ -178,14 +181,14 @@ position = Vector2(380, 481)
 [node name="Pergunta1" type="Node2D" parent="Perguntas"]
 
 [node name="Alternativa" parent="Perguntas/Pergunta1" instance=ExtResource("3_gldc4")]
-position = Vector2(508, 391)
+position = Vector2(520, 405)
 
 [node name="Alternativa2" parent="Perguntas/Pergunta1" instance=ExtResource("3_gldc4")]
-position = Vector2(533, 391)
+position = Vector2(546, 403)
 resposta_correta = true
 
 [node name="Alternativa3" parent="Perguntas/Pergunta1" instance=ExtResource("3_gldc4")]
-position = Vector2(561, 391)
+position = Vector2(574, 401)
 
 [node name="Vidas" type="Label" parent="."]
 offset_left = 450.0
@@ -195,10 +198,15 @@ offset_bottom = 387.0
 theme_override_fonts/font = ExtResource("4_0cso3")
 theme_override_font_sizes/font_size = 8
 text = "Vidas: 3"
-script = ExtResource("5_2klcf")
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerStart" type="Marker2D" parent="."]
 position = Vector2(236, 447)
 
-[connection signal="selecionou_alternativa" from="Perguntas/Pergunta1/Alternativa" to="Vidas" method="_on_alternativa_selecionou_alternativa"]
+[node name="GameOverScreen" parent="." instance=ExtResource("6_2lpho")]
+
+[node name="Pause" parent="." instance=ExtResource("7_nakos")]
+process_mode = 3
+
+[connection signal="pause" from="Pause" to="." method="_on_pause"]
+[connection signal="pause_button_pressed" from="Pause" to="." method="_on_pause_button_pressed"]

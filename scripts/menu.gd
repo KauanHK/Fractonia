@@ -2,12 +2,6 @@ extends CanvasLayer
 
 signal iniciar_fase
 
-
-func emitir_sinal_iniciar_fase(id_fase) -> void:
-	hide()
-	emit_signal('iniciar_fase', id_fase)
-
-
 func _ready() -> void:
 	
 	var botoes = [
@@ -19,25 +13,13 @@ func _ready() -> void:
 	]
 	
 	var fase_atual = SaveManager.dados_do_jogo["fase_atual"]
-	for i in range(1, fase_atual+1):
-		botoes[i].disabled = true
+	for i in range(botoes.size()):
+		var botao = botoes[i]
+		botao.disabled = i >= fase_atual
+		botao.pressed.connect(emitir_sinal_iniciar_fase.bind(i+1))
 
 
-func _on_fase_1_pressed() -> void:
-	emitir_sinal_iniciar_fase(1)
-
-
-func _on_fase_2_pressed() -> void:
-	emitir_sinal_iniciar_fase(2)
-
-
-func _on_fase_3_pressed() -> void:
-	emitir_sinal_iniciar_fase(3)
-
-
-func _on_fase_4_pressed() -> void:
-	emitir_sinal_iniciar_fase(4)
-
-
-func _on_fase_5_pressed() -> void:
-	emitir_sinal_iniciar_fase(5)
+func emitir_sinal_iniciar_fase(id_fase) -> void:
+	print('ok')
+	hide()
+	iniciar_fase.emit(id_fase)

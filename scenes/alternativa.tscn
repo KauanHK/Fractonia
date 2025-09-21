@@ -29,9 +29,8 @@ texture = ExtResource("1_fjec6")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_py15m")
 
-[node name="Alternativa" type="Area2D"]
-collision_layer = 3
-collision_mask = 3
+[node name="Alternativa" type="Area2D" groups=["alternativas"]]
+collision_mask = 2
 script = ExtResource("3_d5h0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

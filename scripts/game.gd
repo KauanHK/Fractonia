@@ -30,34 +30,20 @@ func _on_menu_iniciar_fase(id_fase: int) -> void:
 	
 	add_child(node_player_atual)
 	
-	# Esconde o menu para o jogo aparecer
+	node_mapa_atual.open_menu.connect(_on_open_menu)
 	$Menu.hide()
 
 
-func _on_pause_button_pressed(acao_botao: String) -> void:
-	$Pause.hide()
-	
-	if acao_botao == 'continuar':
-		get_tree().paused = false
-		return
-	
-	if acao_botao == 'menu':
-		get_tree().paused = false
-		limpar_fase_anterior()
-		$Menu.show()
+func _on_open_menu() -> void:
+	limpar_fase_anterior()
+	$Menu.show()
 
 
 func limpar_fase_anterior() -> void:
 	if is_instance_valid(node_mapa_atual):
 		node_mapa_atual.queue_free()
+		node_mapa_atual = null
 		
 	if is_instance_valid(node_player_atual):
 		node_player_atual.queue_free()
-
-
-func _on_pause() -> void:
-	if not node_mapa_atual:
-		return
-	var is_paused = not get_tree().paused
-	$Pause.visible = is_paused
-	get_tree().paused = is_paused
+		node_player_atual = null
