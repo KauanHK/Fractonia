@@ -18,10 +18,17 @@ config/icon="res://icon.svg"
 [autoload]
 
 Music="*res://scenes/music.tscn"
+SaveManager="*res://scripts/save_manager.gd"
 
 [display]
 
 window/vsync/vsync_mode=0
+
+[importer_defaults]
+
+animation_library={
+&"animation/fps": 60.0
+}
 
 [input]
 

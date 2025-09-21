@@ -23,10 +23,10 @@ func _on_menu_iniciar_fase(id_fase: int) -> void:
 	var cena_player = load(caminho_player)
 	node_player_atual = cena_player.instantiate()
 	
-	## Coloca o jogador na posição inicial definida no mapa
-	#var ponto_inicial = node_mapa_atual.get_node_or_null("PlayerStart")
-	#if ponto_inicial:
-		#node_player_atual.global_position = ponto_inicial.global_position
+	# Coloca o jogador na posição inicial definida no mapa
+	var ponto_inicial = node_mapa_atual.get_node_or_null("PlayerStart")
+	if ponto_inicial:
+		node_player_atual.global_position = ponto_inicial.global_position
 	
 	add_child(node_player_atual)
 	
