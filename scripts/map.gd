@@ -28,7 +28,7 @@ func _on_alternativa_selecionada(alternativa_correta) -> void:
 
 
 func game_over() -> void:
-	get_tree().paused = true
+	set_pause(true)
 	$GameOverScreen.show()
 
 
@@ -39,14 +39,14 @@ func is_game_over() -> bool:
 func _on_pause() -> void:
 	var is_paused = not get_tree().paused
 	$Pause.visible = is_paused
-	get_tree().paused = is_paused
+	set_pause(is_paused)
 
 
 func _on_pause_button_pressed(acao_botao: String) -> void:
 	$Pause.hide()
 	
 	if acao_botao == 'continuar':
-		get_tree().paused = false
+		set_pause(false)
 		return
 	
 	if acao_botao == 'menu':
@@ -55,4 +55,10 @@ func _on_pause_button_pressed(acao_botao: String) -> void:
 
 
 func _on_mob_responder_pergunta() -> void:
-	$Node2D/Mob/CanvasLayer/Pergunta.show()
+	
+	$Mobs/Mob.show()
+	set_pause(true)
+	
+
+func set_pause(paused: bool) -> void:
+	get_tree().paused = paused

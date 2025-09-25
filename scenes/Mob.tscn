@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpyl8eaf2x0uh"]
+[gd_scene load_steps=6 format=3 uid="uid://bpyl8eaf2x0uh"]
 
 [ext_resource type="Script" uid="uid://dxn8yb1g2pvua" path="res://scenes/mob.gd" id="1_ex06h"]
 [ext_resource type="Texture2D" uid="uid://dywk0cerv8at7" path="res://assets/sprites/enemyWalking_2.png" id="1_sup6k"]
+[ext_resource type="PackedScene" uid="uid://d0as8wm4c2ost" path="res://scenes/text.tscn" id="3_drloa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sup6k"]
 size = Vector2(107, 418)
@@ -30,14 +31,30 @@ shape = SubResource("RectangleShape2D_sup6k")
 sprite_frames = SubResource("SpriteFrames_ex06h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Pergunta" type="ColorRect" parent="CanvasLayer"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.470588)
+
+[node name="Text" parent="CanvasLayer" instance=ExtResource("3_drloa")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -464.0
+offset_right = 464.0
+offset_bottom = 111.0
+grow_horizontal = 2
+scale = Vector2(0.8, 0.8)
+text = "Lucas, veja a fração 1/2.
+O número de baixo (2) mostra em quantas partes iguais nós dividimos algo.
+Ele se chama...
+ a) Numerador
+ b) Denominador
+ c) Divisor"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

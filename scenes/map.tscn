@@ -209,11 +209,12 @@ position = Vector2(236, 447)
 [node name="Pause" parent="." instance=ExtResource("7_nakos")]
 process_mode = 3
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Mobs" type="Node2D" parent="."]
+process_mode = 3
 
-[node name="Mob" parent="Node2D" instance=ExtResource("8_jh32y")]
+[node name="Mob" parent="Mobs" instance=ExtResource("8_jh32y")]
 position = Vector2(405, 472)
 
 [connection signal="pause" from="Pause" to="." method="_on_pause"]
 [connection signal="pause_button_pressed" from="Pause" to="." method="_on_pause_button_pressed"]
-[connection signal="responder_pergunta" from="Node2D/Mob" to="." method="_on_mob_responder_pergunta"]
+[connection signal="responder_pergunta" from="Mobs/Mob" to="." method="_on_mob_responder_pergunta"]
