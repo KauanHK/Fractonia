@@ -52,3 +52,7 @@ func _on_pause_button_pressed(acao_botao: String) -> void:
 	if acao_botao == 'menu':
 		queue_free()
 		open_menu.emit()
+
+
+func _on_mob_responder_pergunta() -> void:
+	$Node2D/Mob/CanvasLayer/Pergunta.show()
