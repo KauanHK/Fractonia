@@ -13,7 +13,6 @@ layout_mode = 0
 offset_right = 1.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("1_lk1hs")
-text = "Fractonia"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

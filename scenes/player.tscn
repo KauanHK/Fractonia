@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c86jlwpogfbsp"]
+[gd_scene load_steps=10 format=3 uid="uid://c86jlwpogfbsp"]
 
 [ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c0u7sfwu6qhnw" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="PackedScene" uid="uid://bhpiih4l0k602" path="res://scenes/HealthBar.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -57,3 +58,7 @@ shape = SubResource("CircleShape2D_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="HealthBar" parent="." instance=ExtResource("3_qhqgy")]
+
+[connection signal="healthChanged" from="." to="HealthBar" method="_on_player_health_changed"]

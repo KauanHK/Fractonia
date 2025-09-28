@@ -5,16 +5,6 @@ var vidas = 3
 
 signal open_menu
 
-func _ready():
-	
-	# Armazena o node do label do número de vidas
-	label_vidas = $Vidas
-	
-	# Conecta o signal 'selecionou_alternativa'
-	var todas_as_alternativas = get_tree().get_nodes_in_group("alternativas")
-	for alternativa in todas_as_alternativas:
-		alternativa.selecionou_alternativa.connect(_on_alternativa_selecionada)
-
 
 func _on_alternativa_selecionada(alternativa_correta) -> void:
 	if alternativa_correta:

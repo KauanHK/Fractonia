@@ -1,44 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck8nv5laf4faf"]
+[gd_scene load_steps=3 format=3 uid="uid://ck8nv5laf4faf"]
 
-[ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_fjec6"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="2_py15m"]
 [ext_resource type="Script" uid="uid://dfjcnandsc1j1" path="res://scripts/alternativa.gd" id="3_d5h0q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjec6"]
-size = Vector2(14, 15)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_py15m"]
-texture = ExtResource("1_fjec6")
-0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-4:2/0 = 0
-4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-5:2/0 = 0
-5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-7:2/0 = 0
-7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-8:2/0 = 0
-8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
-[sub_resource type="TileSet" id="TileSet_d5h0q"]
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_py15m")
-
-[node name="Alternativa" type="Area2D" groups=["alternativas"]]
-collision_mask = 2
+[node name="Alternativa" type="Button" groups=["alternativas"]]
+offset_right = 200.0
+offset_bottom = 50.0
 script = ExtResource("3_d5h0q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -6.5)
-shape = SubResource("RectangleShape2D_fjec6")
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_py15m")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 2, 0, 0, 0)
-tile_set = SubResource("TileSet_d5h0q")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="button_down" from="." to="." method="_on_button_down"]

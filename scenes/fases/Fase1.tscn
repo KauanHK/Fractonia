@@ -1,13 +1,16 @@
-[gd_scene load_steps=8 format=4 uid="uid://dqjyhhjufkjc8"]
+[gd_scene load_steps=11 format=4 uid="uid://d386dflcjjjjj"]
 
-[ext_resource type="Script" uid="uid://bavu1qhfwe2rf" path="res://scripts/map.gd" id="1_2lpho"]
-[ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="1_4xfga"]
-[ext_resource type="PackedScene" uid="uid://ctviyoqq6o4dy" path="res://scenes/tree.tscn" id="2_paxxb"]
-[ext_resource type="PackedScene" uid="uid://xyqksekujwp4" path="res://scenes/Pergunta.tscn" id="4_nakos"]
-[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="8_jh32y"]
+[ext_resource type="Script" uid="uid://c3fp2ea51v1i2" path="res://scripts/fases/fase_1.gd" id="1_8fkse"]
+[ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="1_uerje"]
+[ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_jjemw"]
+[ext_resource type="PackedScene" uid="uid://ctviyoqq6o4dy" path="res://scenes/tree.tscn" id="3_5ee53"]
+[ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/GameOverScreen.tscn" id="3_7wkkc"]
+[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="4_dwtt2"]
+[ext_resource type="PackedScene" uid="uid://xyqksekujwp4" path="res://scenes/Pergunta.tscn" id="4_keh3k"]
+[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="5_ph2m8"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_paxxb"]
-texture = ExtResource("1_4xfga")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
+texture = ExtResource("2_jjemw")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -157,36 +160,50 @@ texture = ExtResource("1_4xfga")
 2:4/size_in_atlas = Vector2i(3, 3)
 2:4/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_gldc4"]
+[sub_resource type="TileSet" id="TileSet_tv3xg"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_paxxb")
+sources/0 = SubResource("TileSetAtlasSource_mbpw1")
 
-[node name="Map" type="Node2D"]
-script = ExtResource("1_2lpho")
+[node name="Fase1" type="Node2D"]
+script = ExtResource("1_8fkse")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Map" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Map"]
 position = Vector2(400, 500)
 tile_map_data = PackedByteArray("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AAAeAPj/AAAAAAEAAAAdAPj/AAAAAAEAAAAeAPf/AAAAAAEAAAAfAPf/AAAAAAEAAAAfAPb/AAAAAAEAAAAgAPb/AAAAAAEAAAAhAPb/AAAAAAEAAAAiAPX/AAAAAAEAAAAiAPb/AAAAAAEAAAAiAPf/AAAAAAEAAAAhAPf/AAAAAAEAAAAgAPf/AAAAAAEAAAAhAPn/AAAAAAEAAAAiAPn/AAAAAAEAAAAdAPn/AAAAAAEAAAAcAPn/AAAAAAEAAAAdAPf/AAAAAAEAAAAcAPf/AAAAAAEAAAAeAPn/AAAAAAEAAAAbAPn/AAAAAAEAAAAaAPn/AAAAAAEAAAAZAPj/AAAAAAEAAAAYAPj/AAAAAAEAAAAXAPj/AAAAAAEAAAAaAPj/AAAAAAEAAAAbAPj/AAAAAAEAAAAcAPj/AAAAAAEAAAAZAPn/AAAAAAEAAAAYAPn/AAAAAAEAAAAXAPn/AAAAAAEAAAAXAPr/AAAAAAEAAAAYAPr/AAAAAAEAAAAZAPr/AAAAAAEAAAAbAPv/AAAAAAEAAAAcAPv/AAAAAAEAAAAgAPv/AAAAAAEAAAAhAPv/AAAAAAEAAAAeAPv/AAAAAAEAAAAdAPv/AAAAAAEAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAAOAAEAAAAAAAEAAAAPAAEAAAAAAAEAAAAPAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAOAAMAAAAAAAEAAAAPAAQAAAAAAAEAAAAQAAQAAAAAAAEAAAAQAAMAAAAAAAEAAAAQAAIAAAAAAAEAAAAPAAMAAAAAAAEAAAARAAIAAAAAAAEAAAARAAMAAAAAAAEAAAARAAQAAAAAAAEAAAAOAAQAAAAAAAEAAAASAAUAAAAAAAEAAAATAAUAAAAAAAEAAAARAAUAAAAAAAEAAAAQAAUAAAAAAAEAAAAPAAUAAAAAAAEAAAAOAAUAAAAAAAEAAAAYAAUAAAAAAAEAAAAZAAUAAAAAAAEAAAAaAAUAAAAAAAEAAAAbAAUAAAAAAAEAAAA=")
-tile_set = SubResource("TileSet_gldc4")
+tile_set = SubResource("TileSet_tv3xg")
 
-[node name="Trees" type="Node2D" parent="."]
+[node name="Trees" type="Node2D" parent="Map"]
 
-[node name="Tree" parent="Trees" instance=ExtResource("2_paxxb")]
+[node name="Tree" parent="Map/Trees" instance=ExtResource("3_5ee53")]
 position = Vector2(380, 481)
 
-[node name="Perguntas" type="Node2D" parent="."]
+[node name="Perguntas" type="Node2D" parent="Map"]
 
-[node name="Pergunta1" parent="Perguntas" instance=ExtResource("4_nakos")]
+[node name="Pergunta1" parent="Map/Perguntas" instance=ExtResource("4_keh3k")]
 texto_pergunta = "Quanto é 1+1"
 texto_alternativa1 = "1"
 texto_alternativa2 = "2"
 texto_alternativa3 = "3"
 alternativa_correta = 2
 
-[node name="Mobs" type="Node2D" parent="."]
+[node name="Mobs" type="Node2D" parent="Map"]
 process_mode = 3
 
-[node name="Mob" parent="Mobs" instance=ExtResource("8_jh32y")]
+[node name="Mob" parent="Map/Mobs" instance=ExtResource("5_ph2m8")]
 position = Vector2(405, 472)
 
-[connection signal="responder_pergunta" from="Mobs/Mob" to="." method="_on_mob_responder_pergunta"]
+[node name="Player" parent="." instance=ExtResource("1_uerje")]
+SPEED = null
+JUMP_VELOCITY = null
+currentHealth = null
+maxHealth = null
+
+[node name="PlayerStart" type="Marker2D" parent="."]
+position = Vector2(236, 447)
+
+[node name="GameOverScreen" parent="." instance=ExtResource("3_7wkkc")]
+
+[node name="Pause" parent="." instance=ExtResource("4_dwtt2")]
+process_mode = 3

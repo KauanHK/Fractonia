@@ -16,10 +16,12 @@ func _ready():
 
 
 func _on_mouse_entered():
-	hover_sound.play()
+	pass
+	# hover_sound.play()
 	# animation_player.play("hover_effect")
 
 
 func _on_pressed():
-	press_sound.play()
+	pass
+	# press_sound.play()
 	# animation_player.play("press_effect")

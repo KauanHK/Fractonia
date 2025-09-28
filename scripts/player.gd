@@ -3,6 +3,10 @@ extends CharacterBody2D
 
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
+@export var currentHealth: int = 100
+@export var maxHealth: int = 100
+
+signal healthChanged
 
 
 func _physics_process(delta: float) -> void:
@@ -23,3 +27,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func test():
+	$

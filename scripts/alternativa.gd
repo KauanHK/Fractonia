@@ -1,8 +1,9 @@
-extends Area2D
+extends Button
 
 @export var resposta_correta: bool
 
-signal selecionou_alternativa
+signal alternativa_selecionada
 
-func _on_body_entered(body: Node2D) -> void:
-	selecionou_alternativa.emit(resposta_correta)
+
+func _on_button_down() -> void:
+	alternativa_selecionada.emit(resposta_correta)
