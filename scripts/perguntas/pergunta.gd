@@ -6,17 +6,16 @@ extends CanvasLayer
 @export var texto_alternativa3: String
 @export var alternativa_correta: int = 1
 
+@onready var alternativas = [
+	$Alternativas/Alternativa1,
+	$Alternativas/Alternativa2,
+	$Alternativas/Alternativa3
+]
 
 func _ready() -> void:
 	hide()
 	
 	$Text.text = texto_pergunta
-	
-	var alternativas = [
-		$Alternativas/Alternativa1,
-		$Alternativas/Alternativa2,
-		$Alternativas/Alternativa3
-	]
 	
 	var textos_alternativas = [
 		texto_alternativa1,

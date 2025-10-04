@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d386dflcjjjjj"]
+[gd_scene load_steps=11 format=4 uid="uid://d386dflcjjjjj"]
 
 [ext_resource type="Script" uid="uid://c3fp2ea51v1i2" path="res://scripts/fases/fase_1.gd" id="1_8fkse"]
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="1_uerje"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctviyoqq6o4dy" path="res://scenes/tree.tscn" id="3_5ee53"]
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/GameOverScreen.tscn" id="3_7wkkc"]
 [ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="4_dwtt2"]
+[ext_resource type="PackedScene" uid="uid://xyqksekujwp4" path="res://scenes/Pergunta.tscn" id="4_keh3k"]
 [ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="5_ph2m8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
@@ -178,20 +179,22 @@ tile_set = SubResource("TileSet_tv3xg")
 [node name="Tree" parent="Map/Trees" instance=ExtResource("3_5ee53")]
 position = Vector2(380, 481)
 
+[node name="Perguntas" type="Node2D" parent="Map"]
+
+[node name="Pergunta1" parent="Map/Perguntas" instance=ExtResource("4_keh3k")]
+texto_pergunta = "Quanto é 1+1"
+texto_alternativa1 = "1"
+texto_alternativa2 = "2"
+texto_alternativa3 = "3"
+alternativa_correta = 2
+
 [node name="Mobs" type="Node2D" parent="Map"]
 process_mode = 3
 
 [node name="Mob" parent="Map/Mobs" instance=ExtResource("5_ph2m8")]
 position = Vector2(405, 472)
 
-[node name="Mob2" parent="Map/Mobs" instance=ExtResource("5_ph2m8")]
-position = Vector2(839, 534)
-
-[node name="Mob3" parent="Map/Mobs" instance=ExtResource("5_ph2m8")]
-position = Vector2(804, 347)
-
 [node name="Player" parent="." instance=ExtResource("1_uerje")]
-position = Vector2(124, 235)
 
 [node name="PlayerStart" type="Marker2D" parent="."]
 position = Vector2(236, 447)
@@ -200,8 +203,3 @@ position = Vector2(236, 447)
 
 [node name="Pause" parent="." instance=ExtResource("4_dwtt2")]
 process_mode = 3
-
-[connection signal="causar_dano" from="." to="Player" method="_on_fase_1_causar_dano"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob" to="." method="_on_mob_responder_pergunta"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob2" to="." method="_on_mob_responder_pergunta"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob3" to="." method="_on_mob_responder_pergunta"]

@@ -9,6 +9,10 @@ extends CharacterBody2D
 signal healthChanged
 
 
+func _ready() -> void:
+	$HealthBar.update(self)
+
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -29,5 +33,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func test():
-	$
+func _on_fase_1_causar_dano(dano: int) -> void:
+	currentHealth -= dano
+	$HealthBar.update(self)

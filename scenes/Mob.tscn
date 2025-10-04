@@ -31,5 +31,7 @@ shape = SubResource("RectangleShape2D_sup6k")
 sprite_frames = SubResource("SpriteFrames_ex06h")
 
 [node name="Pergunta" parent="." instance=ExtResource("3_drloa")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="responder_pergunta" from="." to="Pergunta" method="_on_mob_responder_pergunta"]

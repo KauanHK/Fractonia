@@ -10,8 +10,13 @@ script = ExtResource("3_d5h0q")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 1.0
-offset_bottom = 23.0
+offset_left = 62.0
+offset_top = 13.0
+offset_right = 130.0
+offset_bottom = 36.0
 theme_override_fonts/font = ExtResource("2_py15m")
+text = "Teste"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]

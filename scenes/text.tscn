@@ -4,3 +4,4 @@
 
 [node name="Text" type="Label"]
 theme_override_fonts/font = ExtResource("1_wwb76")
+text = "abc"

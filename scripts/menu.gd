@@ -20,6 +20,5 @@ func _ready() -> void:
 
 
 func emitir_sinal_iniciar_fase(id_fase) -> void:
-	print('ok')
 	hide()
 	iniciar_fase.emit(id_fase)
