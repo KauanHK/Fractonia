@@ -1,9 +1,16 @@
 extends CanvasLayer
 
+@export var maxHealth: int
+@export var health: int
 
-func update(player) -> void:
-	$ProgressBar.value = player.currentHealth * 100 / player.maxHealth
+signal death
+
+func update() -> void:
+	$ProgressBar.value = health * 100 / maxHealth
+	if health <= 0:
+		death.emit()
 
 
-func _on_player_health_changed(player) -> void:
-	update(player)
+func causar_dano(damage: int) -> void:
+	health -= damage
+	update()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d386dflcjjjjj"]
+[gd_scene load_steps=11 format=4 uid="uid://d386dflcjjjjj"]
 
 [ext_resource type="Script" uid="uid://c3fp2ea51v1i2" path="res://scripts/fases/fase_1.gd" id="1_8fkse"]
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="1_uerje"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/GameOverScreen.tscn" id="3_7wkkc"]
 [ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/pause.tscn" id="4_dwtt2"]
 [ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="5_ph2m8"]
+[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://scenes/bosses/boss.tscn" id="8_jjemw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
 texture = ExtResource("2_jjemw")
@@ -197,11 +198,18 @@ position = Vector2(124, 235)
 position = Vector2(236, 447)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("3_7wkkc")]
+process_mode = 3
 
 [node name="Pause" parent="." instance=ExtResource("4_dwtt2")]
 process_mode = 3
+
+[node name="Boss" parent="." instance=ExtResource("8_jjemw")]
+position = Vector2(998, 515)
 
 [connection signal="causar_dano" from="." to="Player" method="_on_fase_1_causar_dano"]
 [connection signal="responder_pergunta" from="Map/Mobs/Mob" to="." method="_on_mob_responder_pergunta"]
 [connection signal="responder_pergunta" from="Map/Mobs/Mob2" to="." method="_on_mob_responder_pergunta"]
 [connection signal="responder_pergunta" from="Map/Mobs/Mob3" to="." method="_on_mob_responder_pergunta"]
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
+[connection signal="reiniciar_fase" from="GameOverScreen" to="." method="_on_game_over_screen_reiniciar_fase"]
+[connection signal="voltar_menu" from="GameOverScreen" to="." method="_on_game_over_screen_voltar_menu"]

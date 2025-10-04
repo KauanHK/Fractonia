@@ -3,14 +3,13 @@ extends CharacterBody2D
 
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
-@export var currentHealth: int = 100
-@export var maxHealth: int = 100
 
 signal healthChanged
+signal game_over
 
 
 func _ready() -> void:
-	$HealthBar.update(self)
+	$Health.update()
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +32,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+func _process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("move_left"):
+		$AnimatedSprite2D.flip_h = true
+	if Input.is_action_just_pressed("move_right"):
+		$AnimatedSprite2D.flip_h = false
+	
+	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
+		$AnimatedSprite2D.play("walking")
+	else:
+		$AnimatedSprite2D.stop()
+
+
 func _on_fase_1_causar_dano(dano: int) -> void:
-	currentHealth -= dano
-	$HealthBar.update(self)
+	$Health.causar_dano(dano)
+
+
+func _on_health_death() -> void:
+	$AnimatedSprite2D.play("death")
+	game_over.emit()

@@ -33,7 +33,8 @@ var texto_alternativas = [
 ]
 
 signal causar_dano
-
+signal finalizar_fase
+signal reiniciar_fase
 
 func _ready() -> void:
 	
@@ -45,7 +46,6 @@ func _ready() -> void:
 	var alternativas = get_tree().get_nodes_in_group("alternativas")
 	for alternativa in alternativas:
 		alternativa.alternativa_selecionada.connect(_on_alternativa_selecionada)
-		#alternativa.get_node('Label').text = texto_alternativas[i]["pergunta"]
 	
 	var mobs = $Map/Mobs.get_children()
 	for i in range(len(mobs)):
@@ -58,6 +58,7 @@ func _ready() -> void:
 		node_pergunta.texto_alternativa3 = textos_pergunta["alternativas"][2]
 		node_pergunta.update()
 
+
 func _on_mob_responder_pergunta(mob) -> void:
 	mob_atual = mob
 	mob_atual.get_node('Pergunta').show()
@@ -69,4 +70,19 @@ func _on_alternativa_selecionada(resposta_correta: bool) -> void:
 		mob_atual.queue_free()
 		get_tree().paused = false
 		return
-	causar_dano.emit(10)
+	causar_dano.emit(30)
+
+
+func _on_player_game_over() -> void:
+	if mob_atual:
+		mob_atual.get_node('Pergunta').hide()
+	$GameOverScreen.show()
+
+
+func _on_game_over_screen_voltar_menu() -> void:
+	finalizar_fase.emit()
+	queue_free()
+
+
+func _on_game_over_screen_reiniciar_fase() -> void:
+	reiniciar_fase.emit()

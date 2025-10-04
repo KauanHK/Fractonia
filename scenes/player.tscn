@@ -1,25 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://c86jlwpogfbsp"]
+[gd_scene load_steps=12 format=3 uid="uid://c86jlwpogfbsp"]
 
-[ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://c0u7sfwu6qhnw" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cb3ogn583piwa" path="res://assets/sprites/Lucas.png" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://bhpiih4l0k602" path="res://scenes/HealthBar.tscn" id="3_qhqgy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("3_dqkch")
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("3_dqkch")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
-atlas = ExtResource("1_3vyb7")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("3_dqkch")
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("3_dqkch")
@@ -37,9 +32,6 @@ region = Rect2(96, 96, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g2els")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
 }, {
 "duration": 1.0,
@@ -49,8 +41,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_qlg0r")
 }],
 "loop": true,
-"name": &"default",
-"speed": 10.0
+"name": &"death",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -63,8 +55,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_smehm")
 }],
 "loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"name": &"walking",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
@@ -77,8 +69,8 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"new_animation"
-autoplay = "new_animation"
+animation = &"walking"
+autoplay = "walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.81818)
@@ -87,6 +79,7 @@ shape = SubResource("CapsuleShape2D_dqkch")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
-[node name="HealthBar" parent="." instance=ExtResource("3_qhqgy")]
+[node name="Health" parent="." instance=ExtResource("3_qhqgy")]
 
-[connection signal="healthChanged" from="." to="HealthBar" method="_on_player_health_changed"]
+[connection signal="healthChanged" from="." to="Health" method="_on_player_health_changed"]
+[connection signal="death" from="Health" to="." method="_on_health_death"]
