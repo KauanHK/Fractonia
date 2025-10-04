@@ -56,6 +56,7 @@ func _ready() -> void:
 		node_pergunta.texto_alternativa1 = textos_pergunta["alternativas"][0]
 		node_pergunta.texto_alternativa2 = textos_pergunta["alternativas"][1]
 		node_pergunta.texto_alternativa3 = textos_pergunta["alternativas"][2]
+		node_pergunta.update()
 
 func _on_mob_responder_pergunta(mob) -> void:
 	mob_atual = mob

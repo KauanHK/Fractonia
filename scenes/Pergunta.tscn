@@ -19,6 +19,7 @@ offset_left = 505.0
 offset_top = 134.0
 offset_right = 602.0
 offset_bottom = 183.0
+text = "uytfu"
 
 [node name="Alternativas" type="Node2D" parent="."]
 

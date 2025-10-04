@@ -12,10 +12,12 @@ extends CanvasLayer
 	$Alternativas/Alternativa3
 ]
 
+
 func _ready() -> void:
-	hide()
-	
-	$Text.text = texto_pergunta
+	update()
+
+
+func update() -> void:
 	
 	var textos_alternativas = [
 		texto_alternativa1,
@@ -23,7 +25,9 @@ func _ready() -> void:
 		texto_alternativa3
 	]
 	
+	$Text.text = texto_pergunta
+	
 	for i in range(len(alternativas)):
-		alternativas[i].text = textos_alternativas[i];
+		alternativas[i].get_node('Label').text = textos_alternativas[i];
 	
 	alternativas[alternativa_correta-1].resposta_correta = true
