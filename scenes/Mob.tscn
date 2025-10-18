@@ -55,4 +55,5 @@ frame_progress = 0.684797
 visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="responder_pergunta" from="." to="Pergunta" method="_on_mob_responder_pergunta"]
