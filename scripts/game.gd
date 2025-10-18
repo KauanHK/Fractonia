@@ -2,7 +2,10 @@ extends Node2D
 
 var fases = {
 	1: preload("res://scenes/fases/Fase1.tscn"),
-	2: preload("res://scenes/map2.tscn")
+	2: preload("res://scenes/fases/fase_2.tscn"),
+	3: preload("res://scenes/fases/fase_3.tscn"),
+	4: preload("res://scenes/fases/fase_4.tscn"),
+	5: preload("res://scenes/fases/fase_5.tscn")
 }
 
 # Variáveis para saber qual mapa e player estão na tela

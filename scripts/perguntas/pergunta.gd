@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var texto_alternativa3: String
 @export var alternativa_correta: int = 1
 
+@onready var animation_player = $AnimationPlayer
 @onready var alternativas = [
 	$Alternativas/Alternativa1,
 	$Alternativas/Alternativa2,
@@ -31,3 +32,14 @@ func update() -> void:
 		alternativas[i].get_node('Label').text = textos_alternativas[i];
 	
 	alternativas[alternativa_correta-1].resposta_correta = true
+
+
+func fade_in() -> void:
+	animation_player.play('fade_in')
+	await animation_player.animation_finished
+
+
+
+func fade_out() -> void:
+	animation_player.play('fade_out')
+	await animation_player.animation_finished

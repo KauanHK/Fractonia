@@ -8,7 +8,7 @@ var boss_atual = null
 
 var texto_perguntas = [
 	{
-		"pergunta": "Pergunta teste",
+		"pergunta": "Pergunta teste fase 2",
 		"alternativas": [
 			"Teste1",
 			"Teste2",
@@ -148,8 +148,8 @@ func _on_boss_alternativa_selecionada(resposta_correta: bool) -> void:
 
 func _on_boss_death_boss() -> void:
 	var fase_atual = SaveManager.dados_do_jogo["fase_atual"]
-	if fase_atual <= 1:
-		SaveManager.dados_do_jogo["fase_atual"] = 2
+	if fase_atual <= 2:
+		SaveManager.dados_do_jogo["fase_atual"] = 3
 		SaveManager.salvar_jogo()
 	
 	finalizar_fase.emit()

@@ -27,11 +27,13 @@ func responder_pergunta() -> void:
 	
 	if index_pergunta_atual:
 		pergunta_atual.hide()
+		await pergunta_atual.fade_out()
 	else:
 		index_pergunta_atual = 0
 	
 	pergunta_atual = nodes_perguntas[index_pergunta_atual]
 	pergunta_atual.show()
+	pergunta_atual.fade_in()
 	responder_pergunta_boss.emit(self)
 
 
