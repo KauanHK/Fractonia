@@ -1,45 +1,49 @@
 extends CanvasLayer
 
-@export var texto_pergunta: String
-@export var texto_alternativa1: String
-@export var texto_alternativa2: String
-@export var texto_alternativa3: String
-@export var alternativa_correta: int = 1
+# Este sinal é emitido para a cena da fase quando uma resposta é escolhida.
+signal resposta_selecionada(foi_correta)
 
-@onready var animation_player = $AnimationPlayer
-@onready var alternativas = [
-	$Alternativas/Alternativa1,
-	$Alternativas/Alternativa2,
-	$Alternativas/Alternativa3
-]
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var label_pergunta: Label = $Text
+@onready var alternativas_container = $Alternativas
+
+# Guarda os dados da pergunta atual (texto, alternativas, etc.)
+var dados_atuais: Dictionary
 
 
-func _ready() -> void:
-	update()
-
-
-func update() -> void:
+func configurar(dados_da_pergunta: Dictionary):
+	dados_atuais = dados_da_pergunta
+	label_pergunta.text = dados_atuais["pergunta"]
 	
-	var textos_alternativas = [
-		texto_alternativa1,
-		texto_alternativa2,
-		texto_alternativa3
-	]
-	
-	$Text.text = texto_pergunta
-	
-	for i in range(len(alternativas)):
-		alternativas[i].get_node('Label').text = textos_alternativas[i];
-	
-	alternativas[alternativa_correta-1].resposta_correta = true
+	var botoes = alternativas_container.get_children()
+	for i in range(botoes.size()):
+		var botao = botoes[i]
+		botao.text = dados_atuais["alternativas"][i]
+		# Conecta o sinal de cada botão a uma função interna deste script.
+		# O .bind() é usado para passar o índice do botão que foi pressionado.
+		if not botao.pressed.is_connected(_on_botao_alternativa_pressionado):
+			botao.pressed.connect(_on_botao_alternativa_pressionado.bind(i))
 
 
-func fade_in() -> void:
-	animation_player.play('fade_in')
+func ask():
+	self.show()
+	animation_player.play("fade_in")
 	await animation_player.animation_finished
+	get_tree().paused = true
 
 
+func _on_botao_alternativa_pressionado(indice_do_botao: int):
+	print('ok')
+	# A resposta correta é a alternativa no índice 0 por padrão (pode ser ajustado)
+	var foi_correta = (indice_do_botao == 0)
 
-func fade_out() -> void:
-	animation_player.play('fade_out')
+	# Despausa o jogo imediatamente.
+	get_tree().paused = false
+	
+	# Emite o sinal para avisar a cena da fase sobre o resultado.
+	resposta_selecionada.emit(foi_correta)
+
+	# Inicia a animação de fade-out e esconde a UI quando terminar.
+	animation_player.play("fade_out")
 	await animation_player.animation_finished
+	self.hide()

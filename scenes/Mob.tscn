@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dxn8yb1g2pvua" path="res://scripts/mob.gd" id="1_ex06h"]
 [ext_resource type="Texture2D" uid="uid://0v7rg3ypwkyt" path="res://assets/sprites/frac/frac/Monster.png" id="2_drloa"]
-[ext_resource type="PackedScene" uid="uid://xyqksekujwp4" path="res://scenes/Pergunta.tscn" id="3_drloa"]
+[ext_resource type="PackedScene" uid="uid://cvs6uimti5hkc" path="res://scenes/perguntas/Pergunta.tscn" id="3_drloa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sup6k"]
 size = Vector2(125, 115)
@@ -55,5 +55,3 @@ frame_progress = 0.684797
 visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="responder_pergunta" from="." to="Pergunta" method="_on_mob_responder_pergunta"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0u7sfwu6qhnw" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cb3ogn583piwa" path="res://assets/sprites/Lucas.png" id="3_dqkch"]
-[ext_resource type="PackedScene" uid="uid://bhpiih4l0k602" path="res://scenes/HealthBar.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bhpiih4l0k602" path="res://scenes/ui/HealthBar.tscn" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_dqkch")
@@ -81,5 +81,4 @@ zoom = Vector2(3, 3)
 
 [node name="Health" parent="." instance=ExtResource("3_qhqgy")]
 
-[connection signal="healthChanged" from="." to="Health" method="_on_player_health_changed"]
 [connection signal="death" from="Health" to="." method="_on_health_death"]

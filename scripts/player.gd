@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
 
-signal healthChanged
 signal game_over
 
 
@@ -32,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("move_left"):
 		$AnimatedSprite2D.flip_h = true
