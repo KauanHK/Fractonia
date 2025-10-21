@@ -1,11 +1,13 @@
 extends CanvasLayer
 
+class_name GameOverScreen
+
 signal reiniciar_fase
 signal voltar_menu
 
 func _on_restart_button_button_down() -> void:
-	reiniciar_fase.emit()
+	emit_signal("reiniciar_fase")
 
 
 func _on_menu_button_button_down() -> void:
-	voltar_menu.emit()
+	emit_signal("voltar_menu")

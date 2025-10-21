@@ -1,14 +1,20 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 200.0
-@export var JUMP_VELOCITY = -300.0
+class_name Player
+
+@export var SPEED: float = 200.0
+@export var JUMP_VELOCITY: float = -300.0
 
 signal game_over
 
+@onready var health_node: Node = $Health
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 
 func _ready() -> void:
-	$Health.update()
+	if is_instance_valid(health_node) and health_node.has_method("update"):
+		health_node.update()
 
 
 func _physics_process(delta: float) -> void:
@@ -21,9 +27,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -32,22 +37,23 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	
 	if Input.is_action_just_pressed("move_left"):
-		$AnimatedSprite2D.flip_h = true
+		sprite.flip_h = true
 	if Input.is_action_just_pressed("move_right"):
-		$AnimatedSprite2D.flip_h = false
-	
+		sprite.flip_h = false
+
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
-		$AnimatedSprite2D.play("walking")
+		sprite.play("walking")
 	else:
-		$AnimatedSprite2D.stop()
+		sprite.stop()
 
 
 func _on_fase_1_causar_dano(dano: int) -> void:
-	$Health.causar_dano(dano)
+	print('DANO')
+	if is_instance_valid(health_node) and health_node.has_method("causar_dano"):
+		health_node.causar_dano(dano)
 
 
 func _on_health_death() -> void:
-	$AnimatedSprite2D.play("death")
-	game_over.emit()
+	sprite.play("death")
+	emit_signal("game_over")

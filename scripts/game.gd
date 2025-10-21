@@ -1,6 +1,7 @@
+class_name Game
 extends Node2D
 
-var fases = {
+var fases: Dictionary = {
 	1: preload("res://scenes/fases/Fase1.tscn"),
 	2: preload("res://scenes/fases/fase_2.tscn"),
 	3: preload("res://scenes/fases/fase_3.tscn"),
@@ -9,18 +10,25 @@ var fases = {
 }
 
 # Variáveis para saber qual mapa e player estão na tela
-var node_fase_atual = null
+var node_fase_atual: Node = null
 
 func _on_menu_iniciar_fase(id_fase: int) -> void:
-	print('_on_menu_iniciar_fase')
+	print("_on_menu_iniciar_fase")
 	limpar_fase_anterior()
 
 	# Carrega a cena do mapa do disco e a cria no jogo
 	get_tree().paused = false
-	node_fase_atual = fases[id_fase].instantiate()
+	var scene = fases.get(id_fase, null)
+	if scene == null:
+		push_error("Game._on_menu_iniciar_fase: fase %d não encontrada" % id_fase)
+		return
+
+	node_fase_atual = scene.instantiate()
 	add_child(node_fase_atual)
-	node_fase_atual.finalizar_fase.connect(_on_open_menu)
-	node_fase_atual.reiniciar_fase.connect(_on_reiniciar_fase.bind(id_fase))
+	if node_fase_atual.has_signal("finalizar_fase"):
+		node_fase_atual.finalizar_fase.connect(_on_open_menu)
+	if node_fase_atual.has_signal("reiniciar_fase"):
+		node_fase_atual.reiniciar_fase.connect(_on_reiniciar_fase.bind(id_fase))
 
 
 func _on_open_menu() -> void:
@@ -28,7 +36,7 @@ func _on_open_menu() -> void:
 	$Menu.show()
 
 
-func _on_reiniciar_fase(id_fase) -> void:
+func _on_reiniciar_fase(id_fase: int) -> void:
 	_on_menu_iniciar_fase(id_fase)
 
 

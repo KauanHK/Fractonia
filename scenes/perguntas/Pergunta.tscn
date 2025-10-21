@@ -98,4 +98,4 @@ libraries = {
 &"": SubResource("AnimationLibrary_ywq40")
 }
 
-[connection signal="alternativa_selecionada" from="Alternativas/Alternativa1" to="." method="_on_botao_alternativa_pressionado"]
+[connection signal="alternativa_selecionada" from="Alternativas/Alternativa1" to="." method="_on_resposta_selecionada"]

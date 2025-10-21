@@ -1,170 +1,12 @@
 [gd_scene load_steps=10 format=4 uid="uid://dw4qi45i2qjjm"]
 
+[ext_resource type="Script" uid="uid://bm3xjkawnqydl" path="res://scripts/fase.gd" id="1_0fuct"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_seogy"]
 [ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="3_ndhqa"]
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="4_4ku75"]
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/ui/GameOverScreen.tscn" id="5_1ha1c"]
 [ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/ui/pause.tscn" id="6_jotm1"]
 [ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://scenes/bosses/boss.tscn" id="7_dx64h"]
-
-[sub_resource type="GDScript" id="GDScript_1cisv"]
-script/source = "extends Node2D
-
-@onready var player = $Player
-@onready var mobs = $Map/Mobs.get_children()
-
-var mob_atual = null
-var boss_atual = null
-
-var texto_perguntas = [
-	{
-		\"pergunta\": \"Pergunta teste\",
-		\"alternativas\": [
-			\"Teste1\",
-			\"Teste2\",
-			\"Teste3\",
-		]
-	},
-	{
-		\"pergunta\": \"Pergunta teste 2\",
-		\"alternativas\": [
-			\"Teste12\",
-			\"Teste22\",
-			\"Teste32\",
-		]
-	},
-	{
-		\"pergunta\": \"Pergunta teste3\",
-		\"alternativas\": [
-			\"Teste13\",
-			\"Teste23\",
-			\"Teste33\",
-		]
-	}
-]
-
-var texto_perguntas_boss = [
-	{
-		\"pergunta\": \"Pergunta do boss\",
-		\"alternativas\": [
-			\"teste boss1 1\",
-			\"teste boss1 2\",
-			\"teste boss1 3\"
-		]
-	},
-	{
-		\"pergunta\": \"Pergunta do boss 2\",
-		\"alternativas\": [
-			\"teste boss1 4\",
-			\"teste boss1 5\",
-			\"teste boss1 6\"
-		]
-	},
-	{
-		\"pergunta\": \"Pergunta do boss 3\",
-		\"alternativas\": [
-			\"teste boss1 7\",
-			\"teste boss1 8\",
-			\"teste boss1 9\"
-		]
-	}
-]
-
-signal causar_dano
-signal finalizar_fase
-signal reiniciar_fase
-
-func _ready() -> void:
-	
-	# Coloca o jogador na posição inicial definida no mapa
-	var ponto_inicial = get_node_or_null(\"PlayerStart\")
-	if ponto_inicial:
-		player.global_position = ponto_inicial.global_position
-	
-	var mobs = $Map/Mobs.get_children()
-	for i in range(len(mobs)):
-		var mob = mobs[i]
-		var textos_pergunta = texto_perguntas[i]
-		var node_pergunta = mob.get_node('Pergunta')
-		node_pergunta.texto_pergunta = textos_pergunta[\"pergunta\"]
-		node_pergunta.texto_alternativa1 = textos_pergunta[\"alternativas\"][0]
-		node_pergunta.texto_alternativa2 = textos_pergunta[\"alternativas\"][1]
-		node_pergunta.texto_alternativa3 = textos_pergunta[\"alternativas\"][2]
-		node_pergunta.update()
-		
-		for node_alternativa in node_pergunta.get_node('Alternativas').get_children():
-			node_alternativa.alternativa_selecionada.connect(_on_mob_alternativa_selecionada)
-	
-	var boss = $Boss
-	var perguntas_boss = boss.get_node('Perguntas').get_children()
-	
-	for i in range(len(perguntas_boss)):
-		var textos_pergunta = texto_perguntas_boss[i]
-		var node_pergunta = perguntas_boss[i]
-		node_pergunta.texto_pergunta = textos_pergunta[\"pergunta\"]
-		node_pergunta.texto_alternativa1 = textos_pergunta[\"alternativas\"][0]
-		node_pergunta.texto_alternativa2 = textos_pergunta[\"alternativas\"][1]
-		node_pergunta.texto_alternativa3 = textos_pergunta[\"alternativas\"][2]
-		node_pergunta.update()
-		
-		for node_alternativa in node_pergunta.get_node('Alternativas').get_children():
-			node_alternativa.alternativa_selecionada.connect(_on_boss_alternativa_selecionada)
-
-
-func _on_mob_responder_pergunta(mob) -> void:
-	mob_atual = mob
-	mob_atual.get_node('Pergunta').show()
-	get_tree().paused = true
-
-
-func _on_mob_alternativa_selecionada(resposta_correta: bool) -> void:
-	if resposta_correta:
-		await mob_atual.fade_out()
-		mob_atual.queue_free()
-		get_tree().paused = false
-		return
-	causar_dano.emit(10)
-
-
-func _on_player_game_over() -> void:
-	if mob_atual:
-		mob_atual.get_node('Pergunta').hide()
-	if boss_atual:
-		boss_atual.morte_jogador()
-	$GameOverScreen.show()
-
-
-func _on_game_over_screen_voltar_menu() -> void:
-	finalizar_fase.emit()
-	queue_free()
-
-
-func _on_game_over_screen_reiniciar_fase() -> void:
-	reiniciar_fase.emit()
-
-
-func _on_boss_responder_pergunta_boss(boss) -> void:
-	boss_atual = boss
-	boss_atual.death_boss.connect(_on_boss_death_boss)
-	get_tree().paused = true
-
-
-func _on_boss_alternativa_selecionada(resposta_correta: bool) -> void:
-	if resposta_correta:
-		boss_atual.proxima_pergunta()
-		return
-	causar_dano.emit(20)
-
-
-func _on_boss_death_boss() -> void:
-	var fase_atual = SaveManager.dados_do_jogo[\"fase_atual\"]
-	if fase_atual <= 1:
-		SaveManager.dados_do_jogo[\"fase_atual\"] = 2
-		SaveManager.salvar_jogo()
-	
-	finalizar_fase.emit()
-	queue_free()
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
 texture = ExtResource("2_seogy")
@@ -322,7 +164,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mbpw1")
 
 [node name="Fase5" type="Node2D"]
-script = SubResource("GDScript_1cisv")
+script = ExtResource("1_0fuct")
+arquivo_de_perguntas = "res://fases/fase5.json"
+num_fase = 5
 
 [node name="Map" type="Node2D" parent="."]
 
@@ -359,10 +203,6 @@ process_mode = 3
 position = Vector2(1000, 515)
 
 [connection signal="causar_dano" from="." to="Player" method="_on_fase_1_causar_dano"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob" to="." method="_on_mob_responder_pergunta"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob2" to="." method="_on_mob_responder_pergunta"]
-[connection signal="responder_pergunta" from="Map/Mobs/Mob3" to="." method="_on_mob_responder_pergunta"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="reiniciar_fase" from="GameOverScreen" to="." method="_on_game_over_screen_reiniciar_fase"]
 [connection signal="voltar_menu" from="GameOverScreen" to="." method="_on_game_over_screen_voltar_menu"]
-[connection signal="responder_pergunta_boss" from="Boss" to="." method="_on_boss_responder_pergunta_boss"]

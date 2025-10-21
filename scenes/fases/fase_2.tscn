@@ -166,6 +166,7 @@ sources/0 = SubResource("TileSetAtlasSource_mbpw1")
 [node name="Fase2" type="Node2D"]
 script = ExtResource("1_yc52g")
 arquivo_de_perguntas = "res://fases/fase2.json"
+num_fase = 2
 
 [node name="Map" type="Node2D" parent="."]
 

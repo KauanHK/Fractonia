@@ -1,15 +1,17 @@
 extends Area2D
 
-signal deve_fazer_pergunta(mob)
+class_name Mob
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+signal deve_fazer_pergunta(mob: Node)
+
+@onready var animation_player: AnimationPlayer = $Pergunta/AnimationPlayer
 
 
-func fade_out():
+func fade_out() -> void:
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 
 
-func _on_body_entered(body):
-	deve_fazer_pergunta.emit(self)
+func _on_body_entered(body: Node) -> void:
+	emit_signal("deve_fazer_pergunta", self)
 	$CollisionShape2D.set_deferred("disabled", true)

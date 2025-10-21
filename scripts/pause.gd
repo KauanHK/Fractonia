@@ -1,17 +1,18 @@
 extends CanvasLayer
 
+class_name PauseUI
+
 signal pause
-signal pause_button_pressed
+signal pause_button_pressed(action: String)
 
 func _on_continuar_pressed() -> void:
-	pause_button_pressed.emit('continuar')
+	emit_signal("pause_button_pressed", "continuar")
 
 
 func _on_menu_pressed() -> void:
-	pause_button_pressed.emit('menu')
+	emit_signal("pause_button_pressed", "menu")
 
 
 func _process(_delta: float) -> void:
-	
 	if Input.is_action_just_pressed('toggle_pause'):
-		pause.emit()
+		emit_signal("pause")

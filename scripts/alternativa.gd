@@ -1,10 +1,12 @@
 extends Button
 
-@export var resposta_correta: bool
+class_name Alternativa
 
-signal alternativa_selecionada
+@export var resposta_correta: bool = false
+
+signal alternativa_selecionada(foi_correta: bool)
 
 
 func _on_button_down() -> void:
 	disabled = true
-	alternativa_selecionada.emit(resposta_correta)
+	emit_signal("alternativa_selecionada", resposta_correta)
