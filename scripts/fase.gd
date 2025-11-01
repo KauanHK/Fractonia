@@ -64,12 +64,13 @@ func _configurar_boss() -> void:
 	var textos_boss = dados_da_fase["texto_perguntas_boss"]
 
 	for i in range(perguntas_boss.size()):
-		print(i)
 		var node_pergunta := perguntas_boss[i]
 		node_pergunta.configurar(textos_boss[i])
 		
-		node_pergunta.resposta_selecionada.connect(_on_boss_alternativa_selecionada)
-		boss.deve_fazer_pergunta_boss.connect(_on_boss_responder_pergunta_boss)
+		if not node_pergunta.resposta_selecionada.is_connected(_on_boss_alternativa_selecionada):
+			node_pergunta.resposta_selecionada.connect(_on_boss_alternativa_selecionada)
+		if not boss.deve_fazer_pergunta_boss.is_connected(_on_boss_responder_pergunta_boss):
+			boss.deve_fazer_pergunta_boss.connect(_on_boss_responder_pergunta_boss)
 
 
 #-----------------------------------------------------------------------------

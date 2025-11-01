@@ -7,7 +7,7 @@ signal deve_fazer_pergunta_boss(boss: Node)
 signal death_boss
 
 @onready var perguntas_container: Node = $Perguntas
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+#@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var indice_pergunta_atual: int = 0
 var perguntas: Array = []
@@ -63,7 +63,7 @@ func _derrotar_boss() -> void:
 	queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	emit_signal("deve_fazer_pergunta_boss", self)
 	$CollisionShape2D.set_deferred("disabled", true)
 	iniciar_batalha()

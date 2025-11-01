@@ -12,6 +12,6 @@ func fade_out() -> void:
 	await animation_player.animation_finished
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	emit_signal("deve_fazer_pergunta", self)
 	$CollisionShape2D.set_deferred("disabled", true)

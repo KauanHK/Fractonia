@@ -28,11 +28,11 @@ func configurar(dados_da_pergunta: Dictionary) -> void:
 
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
-	for k in range(items.size() - 1, 0, -1):
-		var idx := rng.randi_range(0, k)
-		var tmp = items[k]
-		items[k] = items[idx]
-		items[idx] = tmp
+	for i in range(items.size()):
+		var j := rng.randi_range(0, items.size()-1)
+		var tmp = items[i]
+		items[i] = items[j]
+		items[j] = tmp
 
 	# Preenche botões e encontra onde ficou a alternativa original de índice 0 (correta)
 	indice_correto_atual = -1
@@ -40,15 +40,15 @@ func configurar(dados_da_pergunta: Dictionary) -> void:
 		var botao = botoes[i]
 		if i >= items.size():
 			botao.text = ""
-		else:
-			botao.text = items[i]["text"]
-			if items[i]["orig"] == 0:
-				indice_correto_atual = i
-				print(indice_correto_atual)
+			continue
+		
+		botao.text = items[i]["text"]
+		if items[i]["orig"] == 0:
+			indice_correto_atual = i
 
 		# Conecta o sinal de cada botão ao callback atual
-		if not botao.pressed.is_connected(Callable(self, "_on_resposta_selecionada")):
-			botao.pressed.connect(Callable(self, "_on_resposta_selecionada").bind(i))
+		if not botao.button_down.is_connected(Callable(self, "_on_resposta_selecionada")):
+			botao.button_down.connect(Callable(self, "_on_resposta_selecionada").bind(i))
 
 
 func ask() -> void:
@@ -58,15 +58,17 @@ func ask() -> void:
 	get_tree().paused = true
 
 
-func _on_resposta_selecionada(indice_do_botao: int) -> void:
-	var foi_correta: bool = (indice_do_botao == indice_correto_atual)
-
-	# Despausa o jogo imediatamente.
+func _on_resposta_selecionada(index: int) -> void:
+	
+	var resposta_correta = (index == indice_correto_atual)
+	
+	# Emite o sinal para avisar a cena da fase sobre o resultado.
+	emit_signal("resposta_selecionada", resposta_correta)
+	
+	if not resposta_correta:
+		return
+	
 	get_tree().paused = false
-
-	# Emite o sinal para avisar a cena da fase sobre o resultado.	
-	emit_signal("resposta_selecionada", foi_correta)
-
 	# Inicia a animação de fade-out e esconde a UI quando terminar.
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
