@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpyl8eaf2x0uh"]
+
+[ext_resource type="Script" uid="uid://dxn8yb1g2pvua" path="res://root/scripts/mob.gd" id="1_ex06h"]
+[ext_resource type="Texture2D" uid="uid://0v7rg3ypwkyt" path="res://root/assets/sprites/frac/frac/Monster.png" id="2_drloa"]
+[ext_resource type="PackedScene" uid="uid://cvs6uimti5hkc" path="res://scenes/perguntas/Pergunta.tscn" id="3_drloa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sup6k"]
+size = Vector2(125, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufksc"]
+atlas = ExtResource("2_drloa")
+region = Rect2(0, 0, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx5p6"]
+atlas = ExtResource("2_drloa")
+region = Rect2(48, 0, 48, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4il3"]
+atlas = ExtResource("2_drloa")
+region = Rect2(96, 0, 48, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ex06h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufksc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx5p6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4il3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mob" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+collision_mask = 2
+script = ExtResource("1_ex06h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 2.5)
+shape = SubResource("RectangleShape2D_sup6k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ex06h")
+autoplay = "default"
+frame_progress = 0.684797
+
+[node name="Pergunta" parent="." instance=ExtResource("3_drloa")]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
