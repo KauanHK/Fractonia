@@ -1,7 +1,5 @@
 extends Node2D
 
-class_name Boss1
-
 # Sinais para comunicar com a cena da fase.
 signal deve_fazer_pergunta_boss(boss: Node)
 signal death_boss

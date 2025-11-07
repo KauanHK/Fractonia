@@ -1,4 +1,3 @@
-class_name Fase
 extends Node2D
 
 signal causar_dano(quantidade: int)

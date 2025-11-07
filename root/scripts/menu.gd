@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-class_name MenuUI
-
 signal iniciar_fase(id_fase: int)
 
 @onready var botoes: Array = [ $Fase1, $Fase2, $Fase3, $Fase4, $Fase5 ]

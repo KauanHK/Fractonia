@@ -1,7 +1,5 @@
 extends Area2D
 
-class_name Mob
-
 signal deve_fazer_pergunta(mob: Node)
 
 @onready var animation_player: AnimationPlayer = $Pergunta/AnimationPlayer
