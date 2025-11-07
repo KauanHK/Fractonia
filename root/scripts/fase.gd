@@ -12,6 +12,63 @@ signal reiniciar_fase
 
 var dados_da_fase: Dictionary = {}
 
+const dados_fases = [
+	{
+	  "texto_perguntas": [
+		{
+		  "pergunta": "Pergunta 1 da Fase 1",
+		  "alternativas": [
+			"Alternativa 1.1",
+			"Alternativa 1.2",
+			"Alternativa 1.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta 2 da Fase 1",
+		  "alternativas": [
+			"Alternativa 2.1",
+			"Alternativa 2.2",
+			"Alternativa 2.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta 3 da Fase 1",
+		  "alternativas": [
+			"Alternativa 3.1",
+			"Alternativa 3.2",
+			"Alternativa 3.3"
+		  ]
+		}
+	  ],
+	  "texto_perguntas_boss": [
+		{
+		  "pergunta": "Pergunta do boss 1 da Fase 1",
+		  "alternativas": [
+			"Alternativa 1.1",
+			"Alternativa 1.2",
+			"Alternativa 1.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta do boss 2 da Fase 1",
+		  "alternativas": [
+			"Alternativa 2.1",
+			"Alternativa 2.2",
+			"Alternativa 2.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta do boss 3 da Fase 1",
+		  "alternativas": [
+			"Alternativa 3.1",
+			"Alternativa 3.2",
+			"Alternativa 3.3"
+		  ]
+		}
+	  ]
+	}
+]
+
 var mob_atual: Node = null
 var boss_atual: Node = null
 
@@ -25,15 +82,48 @@ func _ready() -> void:
 
 func _carregar_dados_da_fase() -> void:
 	
-	var file := FileAccess.open(arquivo_de_perguntas, FileAccess.READ)
+	## Verificação 1: O usuário arrastou um arquivo para o Inspector?
+	#if arquivo_de_perguntas.is_empty():
+		#printerr("ERRO: 'Arquivo de Perguntas' não foi definido no Inspector da Fase.")
+		#return # Para a execução aqui para evitar crash
+#
+	## Verificação 2: O arquivo realmente existe nesse caminho?
+	## (Isso usa o 'res://' ou 'user://' que você definiu no Inspector)
+	#if not FileAccess.file_exists(arquivo_de_perguntas):
+		#printerr("ERRO: O arquivo não existe no caminho especificado: ", arquivo_de_perguntas)
+		#return
+#
+	## Agora sim, tentamos abrir o arquivo da variável
+	#var file := FileAccess.open(arquivo_de_perguntas, FileAccess.READ)
+	#
+	## Verificação 3: Conseguimos abrir? (Prevê o erro 'null')
+	#if not file:
+		#printerr("ERRO: Falha ao abrir o arquivo (pode ser permissão?): ", arquivo_de_perguntas)
+		#return
+#
+	## Se chegamos aqui, 'file' é válido e seguro para usar.
+	#var content: String = file.get_as_text()
+	#file.close() # Sempre feche o arquivo!
+#
+	## Verificação 4: O JSON está formatado corretamente?
+	#var json := JSON.new()
+	#var err := json.parse(content)
+	#
+	#if err != OK:
+		#printerr("ERRO: Falha ao analisar o JSON. Verifique a formatação do arquivo.")
+		#printerr("Detalhe do erro: ", json.get_error_message(), " na linha ", json.get_error_line())
+		#return
+#
+	## Verificação 5: O JSON é um Dicionário como esperado?
+	#if not json.get_data() is Dictionary:
+		#printerr("ERRO: O JSON carregado não é um Dicionário (Dictionary).")
+		#return
+#
+	## SUCESSO!
+	#dados_da_fase = json.get_data()
+	#print("Dados da fase carregados com sucesso de: ", arquivo_de_perguntas)
 	
-	var content: String = file.get_as_text()
-	file.close()
-	
-	var json := JSON.new()
-	var err := json.parse(content)
-	
-	dados_da_fase = json.get_data()
+	dados_da_fase = dados_fases[num_fase-1]
 
 
 # Posiciona o jogador no ponto inicial definido no mapa.

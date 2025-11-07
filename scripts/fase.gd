@@ -17,6 +17,64 @@ var mob_atual: Node = null
 var boss_atual: Node = null
 
 
+const dados_fases = [
+	{
+	  "texto_perguntas": [
+		{
+		  "pergunta": "Pergunta 1 da Fase 1",
+		  "alternativas": [
+			"Alternativa 1.1",
+			"Alternativa 1.2",
+			"Alternativa 1.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta 2 da Fase 1",
+		  "alternativas": [
+			"Alternativa 2.1",
+			"Alternativa 2.2",
+			"Alternativa 2.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta 3 da Fase 1",
+		  "alternativas": [
+			"Alternativa 3.1",
+			"Alternativa 3.2",
+			"Alternativa 3.3"
+		  ]
+		}
+	  ],
+	  "texto_perguntas_boss": [
+		{
+		  "pergunta": "Pergunta do boss 1 da Fase 1",
+		  "alternativas": [
+			"Alternativa 1.1",
+			"Alternativa 1.2",
+			"Alternativa 1.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta do boss 2 da Fase 1",
+		  "alternativas": [
+			"Alternativa 2.1",
+			"Alternativa 2.2",
+			"Alternativa 2.3"
+		  ]
+		},
+		{
+		  "pergunta": "Pergunta do boss 3 da Fase 1",
+		  "alternativas": [
+			"Alternativa 3.1",
+			"Alternativa 3.2",
+			"Alternativa 3.3"
+		  ]
+		}
+	  ]
+	}
+]
+
+
 func _ready() -> void:
 	_carregar_dados_da_fase()
 	_posicionar_jogador()
@@ -26,15 +84,19 @@ func _ready() -> void:
 
 func _carregar_dados_da_fase() -> void:
 	
-	var file := FileAccess.open(arquivo_de_perguntas, FileAccess.READ)
+	#var file := FileAccess.open(arquivo_de_perguntas, FileAccess.READ)
+	#
+	#var content: String = file.get_as_text()
+	#file.close()
+	#
+	#var json := JSON.new()
+	#var err := json.parse(content)
 	
-	var content: String = file.get_as_text()
-	file.close()
+	#dados_da_fase = json.get_data()
 	
-	var json := JSON.new()
-	var err := json.parse(content)
-	
-	dados_da_fase = json.get_data()
+	dados_da_fase = dados_fases[num_fase-1]
+	print('ok')
+	print(dados_da_fase)
 
 
 # Posiciona o jogador no ponto inicial definido no mapa.
