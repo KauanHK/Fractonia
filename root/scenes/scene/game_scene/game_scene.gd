@@ -32,9 +32,7 @@ func _input(_event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	print('ok')
-	return
-	_load_game_content_scene()
+	# _load_game_content_scene()
 
 	ui_builder.build()
 

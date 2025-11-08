@@ -16,6 +16,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_e3gbg")
+scene = null
+scene_manager_options_id = null
 menu_save_file_pck = ExtResource("3_50r0p")
 
 [node name="RootMarginContainer" type="MarginContainer" parent="."]

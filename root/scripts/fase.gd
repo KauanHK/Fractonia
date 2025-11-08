@@ -74,6 +74,7 @@ var boss_atual: Node = null
 
 
 func _ready() -> void:
+	print('carregou fase')
 	_carregar_dados_da_fase()
 	_posicionar_jogador()
 	_configurar_mobs()

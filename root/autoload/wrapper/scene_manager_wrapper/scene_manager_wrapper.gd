@@ -24,6 +24,8 @@ func change_scene(scene: SceneManagerEnum.Scene, scene_manager_options_id: Strin
 		scene_manager_options.create_fade_in_options(),
 		scene_manager_options.create_general_options()
 	)
+	
+	print('ok' + str(scene))
 
 
 func change_scene_to_loaded_scene(scene_manager_options_id: String) -> void:

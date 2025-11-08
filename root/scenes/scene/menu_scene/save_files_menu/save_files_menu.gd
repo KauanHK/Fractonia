@@ -19,6 +19,14 @@ var _action_handler: ActionHandler = ActionHandler.new()
 
 @onready var back_menu_button: MenuButtonClass = %BackMenuButton
 
+var fases: Dictionary = {
+	1: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_1.tscn"),
+	2: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_2.tscn"),
+	3: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_3.tscn"),
+	4: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_4.tscn"),
+	5: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_5.tscn")
+}
+
 func _ready() -> void:
 	if not menu_save_file_pck:
 		LogWrapper.debug(self, "Save File UI packed scene not set.")
@@ -57,6 +65,7 @@ func _action_play_save_file_menu_button(id_fase: int) -> void:
 		return
 	process_mode = PROCESS_MODE_DISABLED
 	Data.select_save_file(menu_save_file.index)
+	var scene = SceneManagerEnum.Scene.get('FASE_' + str(id_fase))
 	SceneManagerWrapper.change_scene(scene, scene_manager_options_id)
 
 

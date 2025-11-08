@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://m7v57huwpwnv" path="res://root/autoload/configuration/configuration_controller/game/game_mode_list_cfg/game_mode_list_cfg.gd" id="1_hrlod"]
 [ext_resource type="PackedScene" uid="uid://ccrcijb3tl6sd" path="res://root/artifacts/example_empty_project/scenes/game_content/game_content.tscn" id="2_m2qq3"]
-[ext_resource type="PackedScene" uid="uid://d1qehwioaldlb" path="res://root/scenes/scene/game_scene/game_content/game_content.tscn" id="3_re06j"]
+[ext_resource type="PackedScene" uid="uid://cea34d6eu8anx" path="res://root/scenes/scene/game_scene/game_content/game_content.tscn" id="3_re06j"]
 [ext_resource type="PackedScene" uid="uid://2r2xorepwlip" path="res://root/artifacts/example_3d_fp_controller/scenes/game_content/game_content.tscn" id="4_k8p6j"]
 
 [node name="GameModeListCfg" type="Node"]

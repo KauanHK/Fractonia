@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bo52utxeld0r0" path="res://root/scenes/scene/game_scene/pause_menu/pause_menu.tscn" id="4_bipq8"]
 [ext_resource type="PackedScene" uid="uid://cvaa73qxuiw6n" path="res://root/scenes/component/builder/ui_builder/ui_builder.tscn" id="5_4r42l"]
 [ext_resource type="PackedScene" uid="uid://bea1npdsg7ii1" path="res://root/scenes/scene/menu_scene/options_menu/options_menu.tscn" id="5_4rg8g"]
-[ext_resource type="PackedScene" uid="uid://cea34d6eu8anx" path="res://root/scenes/scene/game_scene/game_content/GameContext.tscn.tscn" id="5_5l013"]
+[ext_resource type="PackedScene" uid="uid://cea34d6eu8anx" path="res://root/scenes/scene/game_scene/game_content/game_content.tscn" id="5_5l013"]
 
 [node name="GameScene" type="Node"]
 process_mode = 3
