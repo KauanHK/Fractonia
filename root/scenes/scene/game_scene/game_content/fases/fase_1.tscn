@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bocixsijt83oi"]
+[gd_scene load_steps=9 format=4 uid="uid://bocixsijt83oi"]
 
 [ext_resource type="Script" uid="uid://bm3xjkawnqydl" path="res://root/scripts/fase.gd" id="1_fih8v"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_flugn"]
 [ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="3_s33fx"]
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://root/scenes/scene/game_scene/game_content/player.tscn" id="4_kub2v"]
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://root/scenes/scene/game_scene/game_content/ui/GameOverScreen.tscn" id="5_rtwlk"]
-[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://root/scenes/scene/game_scene/game_content/ui/pause.tscn" id="6_68xha"]
 [ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_scene/game_content/bosses/boss.tscn" id="7_eh0a5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
@@ -193,9 +192,6 @@ position = Vector2(124, 235)
 position = Vector2(246, 421)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("5_rtwlk")]
-process_mode = 3
-
-[node name="Pause" parent="." instance=ExtResource("6_68xha")]
 process_mode = 3
 
 [node name="Boss" parent="." instance=ExtResource("7_eh0a5")]

@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://ymnjj1ta2lq3"]
+[gd_scene load_steps=9 format=4 uid="uid://ymnjj1ta2lq3"]
 
 [ext_resource type="Script" uid="uid://bm3xjkawnqydl" path="res://root/scripts/fase.gd" id="1_tiveg"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_aidsg"]
-[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://scenes/Mob.tscn" id="3_m1y5f"]
-[ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://scenes/player.tscn" id="4_8gf8a"]
-[ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://scenes/ui/GameOverScreen.tscn" id="5_uv2nb"]
-[ext_resource type="PackedScene" uid="uid://dtf72a8mpaucd" path="res://scenes/ui/pause.tscn" id="6_u627o"]
-[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://scenes/bosses/boss.tscn" id="7_px1cc"]
+[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="3_m1y5f"]
+[ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://root/scenes/scene/game_scene/game_content/player.tscn" id="4_8gf8a"]
+[ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://root/scenes/scene/game_scene/game_content/ui/GameOverScreen.tscn" id="5_uv2nb"]
+[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_scene/game_content/bosses/boss.tscn" id="7_px1cc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
 texture = ExtResource("2_aidsg")
@@ -165,7 +164,7 @@ sources/0 = SubResource("TileSetAtlasSource_mbpw1")
 
 [node name="Fase3" type="Node2D"]
 script = ExtResource("1_tiveg")
-arquivo_de_perguntas = "res://fases/fase3.json"
+arquivo_de_perguntas = "res://root/fases/fase3.json"
 num_fase = 3
 
 [node name="Map" type="Node2D" parent="."]
@@ -194,9 +193,6 @@ position = Vector2(124, 235)
 position = Vector2(246, 421)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("5_uv2nb")]
-process_mode = 3
-
-[node name="Pause" parent="." instance=ExtResource("6_u627o")]
 process_mode = 3
 
 [node name="Boss" parent="." instance=ExtResource("7_px1cc")]

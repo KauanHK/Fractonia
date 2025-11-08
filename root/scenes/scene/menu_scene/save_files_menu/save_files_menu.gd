@@ -27,6 +27,9 @@ var fases: Dictionary = {
 	5: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_5.tscn")
 }
 
+signal iniciar_fase(id_fase: int)
+
+
 func _ready() -> void:
 	if not menu_save_file_pck:
 		LogWrapper.debug(self, "Save File UI packed scene not set.")
@@ -65,8 +68,8 @@ func _action_play_save_file_menu_button(id_fase: int) -> void:
 		return
 	process_mode = PROCESS_MODE_DISABLED
 	Data.select_save_file(menu_save_file.index)
-	var scene = SceneManagerEnum.Scene.get('FASE_' + str(id_fase))
-	SceneManagerWrapper.change_scene(scene, scene_manager_options_id)
+	
+	iniciar_fase.emit(id_fase)
 
 
 func _action_export_save_file_menu_button() -> void:
@@ -122,50 +125,26 @@ func _action_rename_save_file_menu_button() -> void:
 
 
 func _init_menu_save_files() -> void:
-	NodeUtils.remove_children_of(save_files_v_box_container, MenuSaveFile)
 
-	var save_files_metadatas: Array[Dictionary] = Data.get_save_files_metadatas()
-	for index: int in range(Data.save_file_count):
-		var save_file_metadatas: Dictionary = save_files_metadatas[index]
-		var menu_save_file: MenuSaveFile = _init_menu_save_file(save_file_metadatas, index)
-		menu_save_file.set_index(index)
+	var id_fase: int = 1
+	for menu_save_file in save_files_v_box_container.get_children():
+		if menu_save_file is not MenuSaveFile:
+			continue
+		menu_save_file.set_index(id_fase)
 		menu_save_file.save_file_pressed.connect(_on_save_file_pressed)
 		menu_save_file.save_file_button_pressed.connect(_on_save_file_button_pressed)
 		_menu_save_files.append(menu_save_file)
+		menu_save_file.set_text('Fase ' + str(id_fase))
+		id_fase += 1
 
 	control_grab_focus.ready()
-
-
-func _init_menu_save_file(save_file_metadatas: Dictionary, index_fase: int) -> MenuSaveFile:
-	var menu_save_file: MenuSaveFile = menu_save_file_pck.instantiate()
-	NodeUtils.add_child_back(menu_save_file, save_files_v_box_container)
-
-	_set_menu_save_file(menu_save_file, save_file_metadatas, index_fase)
-	return menu_save_file
 
 
 func _reload_menu_save_file(menu_save_file: MenuSaveFile) -> MenuSaveFile:
 	var save_files_metadatas: Array[Dictionary] = Data.get_save_files_metadatas()
 	var save_file_metadatas: Dictionary = save_files_metadatas[menu_save_file.index]
 
-	_set_menu_save_file(menu_save_file, save_file_metadatas)
 	return menu_save_file
-
-
-func _set_menu_save_file(menu_save_file: MenuSaveFile, save_file_metadatas: Dictionary, index_fase: int = -1) -> void:
-	var save_file_metadata: Dictionary = save_file_metadatas.get(Data.METADATA_CATEGORY, {})
-	if save_file_metadata.is_empty():
-		LogWrapper.debug(
-			self, "Could not read metadata '%s': " % [Data.METADATA_CATEGORY], save_file_metadatas
-		)
-		return
-
-	var save_file_name: String = save_file_metadata[Data.METADATA_SAVE_FILE_NAME]
-	var playtime: int = save_file_metadata[Data.METADATA_SAVE_PLAYTIME]
-	var modified_at: Dictionary = save_file_metadata[Data.METADATA_SAVE_MODIFIED_AT]
-	var timezone: Dictionary = save_file_metadata[Data.METADATA_SAVE_TIMEZONE]
-	var modified_at_local_time: Dictionary = DatetimeUtils.convert_datetime(modified_at, timezone)
-	menu_save_file.set_text('Fase ' + str(index_fase+1))
 
 
 func _on_save_file_pressed(index: int) -> void:
@@ -175,6 +154,7 @@ func _on_save_file_pressed(index: int) -> void:
 
 
 func _on_save_file_button_pressed(button_type: MenuSaveFile.ButtonType, id_fase: int) -> void:
+	print('Mudando para a fase' + str(id_fase))
 	_action_handler.handle_action("MenuSaveFile.ButtonType", button_type, self, id_fase)
 
 

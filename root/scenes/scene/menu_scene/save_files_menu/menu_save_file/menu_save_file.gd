@@ -42,7 +42,8 @@ func _connect_signals() -> void:
 
 
 func _on_save_file_pressed() -> void:
-	save_file_button_pressed.emit(ButtonType.PLAY, 1)
+	print('teste: ' + str(index))
+	save_file_button_pressed.emit(ButtonType.PLAY, index)
 
 
 func _on_save_file_button_toggled(toggled_on: bool) -> void:
@@ -54,4 +55,4 @@ func _on_language_changed(_locale: String) -> void:
 
 
 func _on_button_confirmed(button_type: ButtonType) -> void:
-	save_file_button_pressed.emit(button_type)
+	save_file_button_pressed.emit(button_type, index)
