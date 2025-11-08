@@ -3,7 +3,7 @@ extends MarginContainer
 ## Original File MIT License Copyright (c) 2024 TinyTakinTeller
 
 signal save_file_pressed(index: int)
-signal save_file_button_pressed(button_type: ButtonType)
+signal save_file_button_pressed(button_type: ButtonType, id_fase: int)
 
 enum ButtonType { PLAY, EXPORT, IMPORT, DELETE, RENAME }
 
@@ -42,8 +42,7 @@ func _connect_signals() -> void:
 
 
 func _on_save_file_pressed() -> void:
-	print('ButtonType.PLAY')
-	save_file_button_pressed.emit(ButtonType.PLAY)
+	save_file_button_pressed.emit(ButtonType.PLAY, 1)
 
 
 func _on_save_file_button_toggled(toggled_on: bool) -> void:

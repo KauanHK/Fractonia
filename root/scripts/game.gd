@@ -12,6 +12,11 @@ var fases: Dictionary = {
 # Variáveis para saber qual mapa e player estão na tela
 var node_fase_atual: Node = null
 
+
+func _ready() -> void:
+	_on_menu_iniciar_fase(1)
+
+
 func _on_menu_iniciar_fase(id_fase: int) -> void:
 	limpar_fase_anterior()
 

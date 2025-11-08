@@ -51,7 +51,7 @@ func _init_action_handler() -> void:
 	)
 
 
-func _action_play_save_file_menu_button() -> void:
+func _action_play_save_file_menu_button(id_fase: int) -> void:
 	var menu_save_file: MenuSaveFile = get_toggled_save_file()
 	if menu_save_file == null:
 		return
@@ -165,8 +165,8 @@ func _on_save_file_pressed(index: int) -> void:
 			menu_save_file.save_file_button.button_pressed = false
 
 
-func _on_save_file_button_pressed(button_type: MenuSaveFile.ButtonType) -> void:
-	_action_handler.handle_action("MenuSaveFile.ButtonType", button_type, self)
+func _on_save_file_button_pressed(button_type: MenuSaveFile.ButtonType, id_fase: int) -> void:
+	_action_handler.handle_action("MenuSaveFile.ButtonType", button_type, self, id_fase)
 
 
 func _connect_signals() -> void:

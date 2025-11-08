@@ -35,13 +35,16 @@ func register_same_action(ids: Array[int], action: Callable) -> void:
 		register_action(id, action)
 
 
-func handle_action(type: String, id: int, source: Node) -> void:
-	handle_action_args(type, id, source, [])
+func handle_action(type: String, id: int, source: Node, id_fase: int = 1) -> void:
+	handle_action_args(type, id, source, [id_fase])
 
 
 func handle_action_args(type: String, id: int, source: Node, args: Array) -> void:
+	print(args)
 	var action: Callable = _action_map.get(_get_key(type, id), _no_action)
+	print(action)
 	if action != _no_action:
+		print('super ok')
 		LogWrapper.debug(NAME, "%s: %s action called '%s'." % [source.name, type, action])
 		action.callv(args)
 
