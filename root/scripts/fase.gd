@@ -8,6 +8,7 @@ signal reiniciar_fase
 @export var num_fase: int = 1
 
 @onready var player: Node = $Player
+@onready var pause_menu: PauseMenu = $PauseMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
 
 var dados_fase: Dictionary = {}
@@ -16,10 +17,19 @@ var boss_atual: Node = null
 
 
 func _ready() -> void:
+	
 	_carregar_dados_fase()
 	_posicionar_jogador()
 	_configurar_mobs()
 	_configurar_boss()
+	_connect_signals()
+
+
+func _input(event: InputEvent) -> void:
+	
+	if Input.is_action_just_pressed('game_pause'):
+		print('esc')
+		get_tree().paused = true
 
 
 func _carregar_dados_fase() -> void:
@@ -83,6 +93,47 @@ func _configurar_boss() -> void:
 		if not boss.deve_fazer_pergunta_boss.is_connected(_on_boss_responder_pergunta_boss):
 			boss.deve_fazer_pergunta_boss.connect(_on_boss_responder_pergunta_boss)
 
+
+func _on_game_pause_menu_button() -> void:
+	get_tree().paused = true
+	LogWrapper.debug(name, "Game paused.")
+
+
+func _on_continue_menu_button() -> void:
+	pause_menu.visible = false
+	get_tree().paused = false
+	LogWrapper.debug(name, "Game unpaused.")
+
+
+func _on_options_menu_button() -> void:
+	pause_menu.visible = false
+
+
+func _on_options_back_menu_button() -> void:
+	pause_menu.visible = true
+
+
+func _on_leave_menu_button() -> void:
+	pause_menu.visible = false
+	get_tree().paused = false
+	LogWrapper.debug(name, "Game leave.")
+
+	self.process_mode = PROCESS_MODE_DISABLED
+	Data.exit_save_file()
+
+
+func _on_quit_menu_button() -> void:
+	Data.save_save_file()
+	get_tree().quit()
+
+
+func _connect_signals() -> void:
+	
+	pause_menu.continue_menu_button.confirmed.connect(_on_continue_menu_button)
+	pause_menu.options_menu_button.confirmed.connect(_on_options_menu_button)
+	pause_menu.leave_menu_button.confirmed.connect(_on_leave_menu_button)
+	pause_menu.quit_menu_button.confirmed.connect(_on_quit_menu_button)
+	
 
 #-----------------------------------------------------------------------------
 # SEÇÃO DE LÓGICA DE COMBATE E PERGUNTAS

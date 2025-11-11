@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvs6uimti5hkc"]
 
 [ext_resource type="Script" uid="uid://b5g2w1wr3t3mu" path="res://root/scripts/perguntas/pergunta.gd" id="1_x3yau"]
-[ext_resource type="PackedScene" uid="uid://ck8nv5laf4faf" path="res://scenes/perguntas/alternativa.tscn" id="2_ydwpk"]
+[ext_resource type="PackedScene" uid="uid://ck8nv5laf4faf" path="res://root/scenes/scene/game_scene/game_content/perguntas/alternativa.tscn" id="2_ydwpk"]
 
 [sub_resource type="Animation" id="Animation_x3yau"]
 length = 0.001

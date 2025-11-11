@@ -4,33 +4,25 @@
 [ext_resource type="Script" uid="uid://3urf76et05ff" path="res://root/scenes/scene/game_scene/pause_menu/pause_menu.gd" id="1_nxviq"]
 [ext_resource type="PackedScene" uid="uid://bv7d4vxqjocks" path="res://root/scenes/component/control/control_grab_focus/control_grab_focus.tscn" id="2_4br2w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e53e6"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71lmm"]
 bg_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
-[node name="PauseMenu" type="Control"]
-process_mode = 2
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_nxviq")
 
 [node name="MainMenuMarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.5
+offset_left = -79.5
 offset_top = -154.5
-offset_right = 73.5
+offset_right = 79.5
 offset_bottom = 154.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -46,7 +38,7 @@ theme_override_constants/margin_bottom = -40
 
 [node name="SolidPanel" type="Panel" parent="MainMenuMarginContainer/SolidPanelMarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_e53e6")
+theme_override_styles/panel = SubResource("StyleBoxFlat_71lmm")
 
 [node name="MainMenuVBoxContainer" type="VBoxContainer" parent="MainMenuMarginContainer"]
 layout_mode = 2

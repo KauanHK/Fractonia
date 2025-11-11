@@ -7,6 +7,7 @@ extends Control
 @export var scene_manager_options_id: String = "fade_boot"
 
 var scene_fase_atual = null
+var scene_pause = null
 var _boot_splash_color: Color = ProjectSettings.get("application/boot_splash/bg_color")
 var _boot_splash_image_path: String = ProjectSettings.get("application/boot_splash/image")
 var _boot_splash_texture: Texture = load(_boot_splash_image_path)
@@ -40,6 +41,8 @@ func _set_boot_splash() -> void:
 
 func _on_inicar_fase(id_fase: int) -> void:
 	menu_scene.queue_free()
-	print(id_fase)
 	scene_fase_atual = fases[id_fase].instantiate()
+	scene_pause = PauseMenu.new()
+	
 	add_child(scene_fase_atual)
+	add_child(scene_pause)

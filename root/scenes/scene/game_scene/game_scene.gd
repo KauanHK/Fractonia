@@ -21,6 +21,10 @@ extends Node
 
 # Esc key shortcut toggles pause menu or exits from options via back button
 func _input(_event: InputEvent) -> void:
+	
+	if Input.is_action_just_pressed("game_pause"):
+		print('ok')
+	
 	if Input.is_action_just_pressed("game_pause"):
 		if get_tree().paused:
 			if pause_menu.visible:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bmot54wjwey0r"]
+[gd_scene load_steps=11 format=4 uid="uid://bmot54wjwey0r"]
 
 [ext_resource type="Script" uid="uid://bm3xjkawnqydl" path="res://root/scripts/fase.gd" id="1_yc52g"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_r2pir"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://root/scenes/scene/game_scene/game_content/player.tscn" id="4_vuenb"]
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://root/scenes/scene/game_scene/game_content/ui/GameOverScreen.tscn" id="5_lrf7k"]
 [ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_scene/game_content/bosses/boss.tscn" id="7_vew7i"]
+[ext_resource type="PackedScene" uid="uid://bo52utxeld0r0" path="res://root/scenes/scene/game_scene/pause_menu/pause_menu.tscn" id="7_ymq8r"]
+[ext_resource type="PackedScene" uid="uid://cvaa73qxuiw6n" path="res://root/scenes/component/builder/ui_builder/ui_builder.tscn" id="8_nryg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbpw1"]
 texture = ExtResource("2_r2pir")
@@ -163,6 +165,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mbpw1")
 
 [node name="Fase2" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_yc52g")
 arquivo_de_perguntas = "res://root/fases/fase2.json"
 num_fase = 2
@@ -197,6 +200,11 @@ process_mode = 3
 
 [node name="Boss" parent="." instance=ExtResource("7_vew7i")]
 position = Vector2(1000, 515)
+
+[node name="UiBuilder" parent="." instance=ExtResource("8_nryg1")]
+unique_name_in_owner = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_ymq8r")]
 
 [connection signal="causar_dano" from="." to="Player" method="_on_fase_1_causar_dano"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
