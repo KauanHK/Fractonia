@@ -23,7 +23,7 @@ Log/break_on_error=false
 
 [application]
 
-config/name="TakinGodotTemplate"
+config/name="Fractonia"
 config/version="0.7.2"
 run/main_scene="res://root/scenes/scene/boot_splash_scene/boot_splash_scene.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")

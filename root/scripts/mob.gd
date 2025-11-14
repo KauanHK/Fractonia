@@ -1,3 +1,4 @@
+class_name Mob
 extends Area2D
 
 signal deve_fazer_pergunta(mob: Node)

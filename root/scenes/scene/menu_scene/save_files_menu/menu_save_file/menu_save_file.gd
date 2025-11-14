@@ -42,7 +42,6 @@ func _connect_signals() -> void:
 
 
 func _on_save_file_pressed() -> void:
-	print('teste: ' + str(index))
 	save_file_button_pressed.emit(ButtonType.PLAY, index)
 
 

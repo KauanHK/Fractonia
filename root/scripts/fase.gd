@@ -1,64 +1,60 @@
+class_name Fase
 extends Node2D
 
 signal causar_dano(quantidade: int)
 signal finalizar_fase
 signal reiniciar_fase
 
-@export_file("*.json") var arquivo_de_perguntas: String = ""
-@export var num_fase: int = 1
-
 @onready var player: Node = $Player
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
 
+var num_fase: int = 1
 var dados_fase: Dictionary = {}
 var mob_atual: Node = null
 var boss_atual: Node = null
 
+var mapas: Array[Resource] = [
+	preload("res://root/scenes/scene/game_scene/game_content/mapas/Mapa1.tscn"),
+	preload("res://root/scenes/scene/game_scene/game_content/mapas/Mapa2.tscn"),
+	preload("res://root/scenes/scene/game_scene/game_content/mapas/Mapa3.tscn"),
+	preload("res://root/scenes/scene/game_scene/game_content/mapas/Mapa4.tscn"),
+	preload("res://root/scenes/scene/game_scene/game_content/mapas/Mapa5.tscn")
+]
 
-func _ready() -> void:
-	
-	_carregar_dados_fase()
-	_posicionar_jogador()
-	_configurar_mobs()
-	_configurar_boss()
-	_connect_signals()
+var arquivos_perguntas: Array[String] = [
+	"res://root/fases/fase1.json",
+	"res://root/fases/fase2.json",
+	"res://root/fases/fase3.json",
+	"res://root/fases/fase4.json",
+	"res://root/fases/fase5.json"
+]
+
+var _mapa_atual = null
 
 
 func _input(event: InputEvent) -> void:
-	
 	if Input.is_action_just_pressed('game_pause'):
 		print('esc')
 		get_tree().paused = true
 
 
 func _carregar_dados_fase() -> void:
-	
-	if not FileAccess.file_exists(arquivo_de_perguntas):
-		printerr("ERRO: O arquivo não existe no caminho especificado: ", arquivo_de_perguntas)
-		return
-#
-	var file := FileAccess.open(arquivo_de_perguntas, FileAccess.READ)
-	if not file:
-		printerr("ERRO: Falha ao abrir o arquivo (pode ser permissão?): ", arquivo_de_perguntas)
-		return
-#
+
+	var path_arquivo_perguntas: String = arquivos_perguntas[num_fase-1]
+	var file := FileAccess.open(path_arquivo_perguntas, FileAccess.READ)
 	var content: String = file.get_as_text()
 	file.close()
 
 	var json := JSON.new()
-	var err := json.parse(content)
-
-	if err != OK:
-		printerr("ERRO: Falha ao analisar o JSON. Verifique a formatação do arquivo.")
-		printerr("Detalhe do erro: ", json.get_error_message(), " na linha ", json.get_error_line())
-		return
-
+	json.parse(content)
 	dados_fase = json.get_data()
-	print("Dados da fase carregados com sucesso de: ", arquivo_de_perguntas)
 
 
-# Posiciona o jogador no ponto inicial definido no mapa.
+func _iniciar_mapa() -> void:
+	_mapa_atual = mapas[num_fase-1].instantiate()
+
+
 func _posicionar_jogador() -> void:
 	var ponto_inicial := get_node_or_null("PlayerStart")
 	if ponto_inicial and is_instance_valid(player):
@@ -92,6 +88,21 @@ func _configurar_boss() -> void:
 			node_pergunta.resposta_selecionada.connect(_on_boss_alternativa_selecionada)
 		if not boss.deve_fazer_pergunta_boss.is_connected(_on_boss_responder_pergunta_boss):
 			boss.deve_fazer_pergunta_boss.connect(_on_boss_responder_pergunta_boss)
+
+
+func init() -> void:
+	
+	_carregar_dados_fase()
+	_iniciar_mapa()
+	_posicionar_jogador()
+	_configurar_mobs()
+	_configurar_boss()
+	_connect_signals()
+
+
+func set_fase(num_fase: int) -> void:
+	assert(num_fase >= 1 and num_fase <= 5)
+	self.num_fase = num_fase
 
 
 func _on_game_pause_menu_button() -> void:

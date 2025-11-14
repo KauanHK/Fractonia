@@ -19,14 +19,6 @@ var _action_handler: ActionHandler = ActionHandler.new()
 
 @onready var back_menu_button: MenuButtonClass = %BackMenuButton
 
-var fases: Dictionary = {
-	1: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_1.tscn"),
-	2: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_2.tscn"),
-	3: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_3.tscn"),
-	4: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_4.tscn"),
-	5: preload("res://root/scenes/scene/game_scene/game_content/fases/fase_5.tscn")
-}
-
 signal iniciar_fase(id_fase: int)
 
 
