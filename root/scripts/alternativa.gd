@@ -1,6 +1,8 @@
 class_name Alternativa
 extends Button
 
+var alternativa_correta: bool = false
 
-func _on_button_down() -> void:
-	disabled = true
+
+func set_alternativa_correta(alternativa_correta: bool) -> void:
+	self.alternativa_correta = alternativa_correta

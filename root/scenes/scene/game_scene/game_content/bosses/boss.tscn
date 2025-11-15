@@ -60,5 +60,3 @@ visible = false
 
 [node name="Pergunta3" parent="Perguntas" instance=ExtResource("3_buxl7")]
 visible = false
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

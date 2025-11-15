@@ -179,9 +179,12 @@ process_mode = 3
 
 [node name="Mob" parent="Mobs" instance=ExtResource("2_lecm6")]
 position = Vector2(405, 472)
+collision_layer = 4
 
 [node name="Mob2" parent="Mobs" instance=ExtResource("2_lecm6")]
 position = Vector2(839, 534)
+collision_layer = 4
 
 [node name="Mob3" parent="Mobs" instance=ExtResource("2_lecm6")]
 position = Vector2(804, 347)
+collision_layer = 4

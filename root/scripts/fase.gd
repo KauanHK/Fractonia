@@ -71,7 +71,6 @@ func _iniciar_mapa() -> void:
 	add_child(_mapa_atual)
 	
 	_mapa_atual.posicionar_jogador(player)
-	print(dados_fase["texto_perguntas_boss"])
 	_mapa_atual.configurar_boss(dados_fase["texto_perguntas_boss"])
 	_mapa_atual.configurar_mobs(dados_fase["texto_perguntas"])
 
@@ -106,8 +105,7 @@ func _connect_signals() -> void:
 
 func _connect_mobs_signals() -> void:
 	for mob: Mob in _mapa_atual.mobs:
-		mob.body_entered.connect(_on_fazer_pergunta.bind(mob))
-		print('connected _on_fazer_pergunta')
+		mob.fazer_pergunta.connect(_on_fazer_pergunta)
 
 
 func _on_fazer_pergunta(mob: Mob) -> void:
