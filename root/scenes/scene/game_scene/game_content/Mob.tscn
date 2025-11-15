@@ -53,5 +53,3 @@ frame_progress = 0.684797
 
 [node name="Pergunta" parent="." instance=ExtResource("3_drloa")]
 visible = false
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

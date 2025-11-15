@@ -6,6 +6,8 @@ extends Control
 @export var scene: SceneManagerEnum.Scene = SceneManagerEnum.Scene.MENU_SCENE
 @export var scene_manager_options_id: String = "fade_boot"
 
+const FASE_SCENE = preload("res://root/scenes/scene/game_scene/game_content/fases/fase.tscn")
+
 var scene_fase_atual: Fase = null
 var scene_pause = null
 var _boot_splash_color: Color = ProjectSettings.get("application/boot_splash/bg_color")
@@ -34,7 +36,12 @@ func _set_boot_splash() -> void:
 func _on_inicar_fase(id_fase: int) -> void:
 	menu_scene.queue_free()
 	
-	scene_fase_atual = Fase.new()
+	scene_fase_atual = FASE_SCENE.instantiate()
+	add_child(scene_fase_atual)
+	
+	if scene_fase_atual.player == null:
+		print('WTF')
+		return
 	scene_fase_atual.set_fase(id_fase)
 	scene_fase_atual.init()
 	

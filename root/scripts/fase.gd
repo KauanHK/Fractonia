@@ -5,7 +5,7 @@ signal causar_dano(quantidade: int)
 signal finalizar_fase
 signal reiniciar_fase
 
-@onready var player: Node = $Player
+@onready var player: Player = $Player
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
 
@@ -33,10 +33,14 @@ var arquivos_perguntas: Array[String] = [
 ]
 
 
+func _ready() -> void:
+	_connect_signals()
+
+
 func init() -> void:
 	_carregar_dados_fase()
 	_iniciar_mapa()
-	_connect_signals()
+	_connect_mobs_signals()
 
 
 func set_fase(num_fase: int) -> void:
@@ -46,7 +50,7 @@ func set_fase(num_fase: int) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed('game_pause'):
-		print('esc')
+		pause_menu.visible = true
 		get_tree().paused = true
 
 
@@ -64,8 +68,10 @@ func _carregar_dados_fase() -> void:
 
 func _iniciar_mapa() -> void:
 	_mapa_atual = mapas[num_fase-1].instantiate()
-	print(player)
+	add_child(_mapa_atual)
+	
 	_mapa_atual.posicionar_jogador(player)
+	print(dados_fase["texto_perguntas_boss"])
 	_mapa_atual.configurar_boss(dados_fase["texto_perguntas_boss"])
 	_mapa_atual.configurar_mobs(dados_fase["texto_perguntas"])
 
@@ -87,25 +93,24 @@ func _on_options_back_menu_button() -> void:
 	pause_menu.visible = true
 
 
-func _on_leave_menu_button() -> void:
-	pause_menu.visible = false
-	get_tree().paused = false
-
-
 func _on_quit_menu_button() -> void:
-	Data.save_save_file()
 	get_tree().quit()
 
 
 func _connect_signals() -> void:
 
 	pause_menu.continue_menu_button.confirmed.connect(_on_continue_menu_button)
-	#pause_menu.options_menu_button.confirmed.connect(_on_options_menu_button)
-	pause_menu.leave_menu_button.confirmed.connect(_on_leave_menu_button)
+	pause_menu.options_menu_button.confirmed.connect(_on_options_menu_button)
 	pause_menu.quit_menu_button.confirmed.connect(_on_quit_menu_button)
 
 
-func _on_mob_responder_pergunta(mob: Mob) -> void:
+func _connect_mobs_signals() -> void:
+	for mob: Mob in _mapa_atual.mobs:
+		mob.body_entered.connect(_on_fazer_pergunta.bind(mob))
+		print('connected _on_fazer_pergunta')
+
+
+func _on_fazer_pergunta(mob: Mob) -> void:
 	mob_atual = mob
 	get_tree().paused = true
 	mob_atual.pergunta.ask()

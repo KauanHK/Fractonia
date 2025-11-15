@@ -21,7 +21,7 @@ func configurar(dados_da_pergunta: Dictionary) -> void:
 
 	dados_atuais = dados_da_pergunta
 	_definir_texto_pergunta(dados_atuais['pergunta'])
-	var items: Array[Dictionary] = _mapear_conteudo_alternativas(dados_atuais['alternativas'])
+	var items: Array = _mapear_conteudo_alternativas(dados_atuais['alternativas'])
 	_randomizar(items)
 
 	# Preenche botões e encontra onde ficou a alternativa original de índice 0 (correta)
@@ -56,14 +56,14 @@ func _definir_texto_pergunta(text: String) -> void:
 	label_pergunta.text = text
 
 
-func _mapear_conteudo_alternativas(alternativas: Array[String]) -> Array[Dictionary]:
+func _mapear_conteudo_alternativas(alternativas: Array) -> Array:
 	var items: Array = []
 	for j in range(alternativas.size()):
 		items.append({"text": alternativas[j], "orig": j})
 	return items
 
 
-func _randomizar(items: Array[Dictionary]) -> void:
+func _randomizar(items: Array) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
 	for i in range(items.size()):
