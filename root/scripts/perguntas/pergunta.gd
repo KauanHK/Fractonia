@@ -9,6 +9,8 @@ extends CanvasLayer
 var dados_atuais: Dictionary
 var indice_correto_atual: int = -1
 
+signal alternativa_selecionada(alternativa: Alternativa)
+
 
 func _ready() -> void:
 	_carregar_alternativas()
@@ -17,25 +19,30 @@ func _ready() -> void:
 func configurar(dados_da_pergunta: Dictionary) -> void:
 
 	dados_atuais = dados_da_pergunta
-	alternativas[0].set_alternativa_correta(true)
 
 	_definir_texto_pergunta(dados_atuais['pergunta'])
-	var items: Array = dados_atuais['alternativas']
-	_randomizar(items)
+	var texto_alternativas: Array = dados_atuais['alternativas']
+	_randomizar(alternativas)
+	alternativas[0].set_alternativa_correta(true)
 
 	var i = 0
 	for alternativa: Alternativa in alternativas:
-		if i >= items.size():
-			alternativa.text = ""
-			continue
-		alternativa.text = items[i]
-		alternativa.button_down.connect(_on_resposta_selecionada.bind(alternativa))
+		alternativa.text = texto_alternativas[i]
 		i += 1
 
 
 func ask() -> void:
+	await fade_in()
 	show()
+
+
+func fade_in() -> void:
 	animation_player.play("fade_in")
+	await animation_player.animation_finished
+
+
+func fade_out() -> void:
+	animation_player.play("fade_out")
 	await animation_player.animation_finished
 
 
@@ -58,15 +65,10 @@ func _randomizar(items: Array) -> void:
 		items[j] = tmp
 
 
-func _on_resposta_selecionada(index: int) -> void:
-	
-	var resposta_correta: bool = (index == indice_correto_atual)
-	resposta_selecionada.emit(resposta_correta)
-	
-	if not resposta_correta:
-		return
-	
-	# Inicia a animação de fade-out e esconde a UI quando terminar.
-	animation_player.play("fade_out")
-	await animation_player.animation_finished
-	hide()
+func _connect_signals() -> void:
+	for alternativa: Alternativa in alternativas:
+		alternativa.alternativa_selecionada.connect(_on_alternativa_selecionada)
+
+
+func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
+	alternativa_selecionada.emit(alternativa)

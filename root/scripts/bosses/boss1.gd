@@ -1,55 +1,49 @@
 class_name Boss
-extends Node2D
+extends Area2D
 
 # Sinais para comunicar com a cena da fase.
-signal deve_fazer_pergunta_boss(boss: Node)
-signal death_boss
+signal iniciar_batalha
+signal morte
 
-@onready var perguntas: Array[PerguntaUI]
+@onready var perguntas: Array[PerguntaUI] = _carregar_perguntas()
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var indice_pergunta_atual: int = 0
-
-
-func _carregar_perguntas() -> void:
-	for node_pergunta: PerguntaUI in $Perguntas.get_children():
-		perguntas.append(node_pergunta)
+var pergunta_atual: PerguntaUI
 
 
 func _ready() -> void:
-	_carregar_perguntas()
+	_connect_signals()
+
+
+func _connect_signals() -> void:
+	body_entered.connect(_on_body_entered)
+
+
+func _carregar_perguntas() -> Array[PerguntaUI]:
+	var perguntas: Array[PerguntaUI] = []
+	for node_pergunta: PerguntaUI in $Perguntas.get_children():
+		perguntas.append(node_pergunta)
+	return perguntas
 
 
 func proxima_pergunta() -> void:
-	# Esconde a pergunta anterior (se houver).
-	if indice_pergunta_atual < perguntas.size():
-		perguntas[indice_pergunta_atual].hide()
 
-	indice_pergunta_atual += 1
-
-	# Verifica se ainda há perguntas a serem feitas.
-	if indice_pergunta_atual < perguntas.size():
-		# Inicia a próxima pergunta.
-		perguntas[indice_pergunta_atual].ask()
+	if pergunta_atual:
+		await pergunta_atual.fade_out()
+		indice_pergunta_atual += 1
 	else:
-		# Se não houver mais perguntas, o boss foi derrotado.
-		_derrotar_boss()
+		indice_pergunta_atual = 0
+
+	if indice_pergunta_atual < perguntas.size():
+		pergunta_atual = perguntas[indice_pergunta_atual]
+		pergunta_atual.ask()
+		return
+	_derrotar_boss()
 
 
 func morte_jogador() -> void:
-	# Esconde a UI de pergunta que estiver ativa.
-	if indice_pergunta_atual < perguntas.size():
-		perguntas[indice_pergunta_atual].hide()
-
-	# Reseta o estado da batalha para a próxima tentativa.
-	indice_pergunta_atual = 0
-	get_tree().paused = false # Garante que o jogo está despausado.
-
-
-func iniciar_batalha() -> void:
-	indice_pergunta_atual = 0
-	if perguntas.size() > 0:
-		perguntas[indice_pergunta_atual].ask()
+	pergunta_atual.hide()
 
 
 func _derrotar_boss() -> void:
@@ -57,14 +51,10 @@ func _derrotar_boss() -> void:
 	# animation_player.play("morte")
 	# await animation_player.animation_finished
 
-	# Avisa a cena da fase que a batalha terminou.
-	emit_signal("death_boss")
-
-	# Remove o boss da cena.
+	morte.emit()
 	queue_free()
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	emit_signal("deve_fazer_pergunta_boss", self)
-	$CollisionShape2D.set_deferred("disabled", true)
-	iniciar_batalha()
+	print('boss colidiud')
+	iniciar_batalha.emit()

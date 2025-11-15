@@ -12,7 +12,7 @@ signal reiniciar_fase
 var num_fase: int = 1
 var dados_fase: Dictionary
 var mob_atual: Mob
-var boss_atual: Node
+var boss: Boss
 
 var _mapa_atual: Mapa
 
@@ -41,6 +41,7 @@ func init() -> void:
 	_carregar_dados_fase()
 	_iniciar_mapa()
 	_connect_mobs_signals()
+	_connect_boss_signals()
 
 
 func set_fase(num_fase: int) -> void:
@@ -73,6 +74,8 @@ func _iniciar_mapa() -> void:
 	_mapa_atual.posicionar_jogador(player)
 	_mapa_atual.configurar_boss(dados_fase["texto_perguntas_boss"])
 	_mapa_atual.configurar_mobs(dados_fase["texto_perguntas"])
+	
+	boss = _mapa_atual.boss
 
 
 func _on_game_pause_menu_button() -> void:
@@ -106,6 +109,14 @@ func _connect_signals() -> void:
 func _connect_mobs_signals() -> void:
 	for mob: Mob in _mapa_atual.mobs:
 		mob.fazer_pergunta.connect(_on_fazer_pergunta)
+		for alternativa: Alternativa in mob.pergunta.alternativas:
+			alternativa.alternativa_selecionada.connect(_on_alternativa_selecionada)
+
+
+func _connect_boss_signals() -> void:
+	boss.iniciar_batalha.connect(_on_boss_iniciar_batalha)
+	for pergunta: PerguntaUI in boss.perguntas:
+		pergunta.alternativa_selecionada.connect(_on_boss_alternativa_selecionada)
 
 
 func _on_fazer_pergunta(mob: Mob) -> void:
@@ -114,25 +125,27 @@ func _on_fazer_pergunta(mob: Mob) -> void:
 	mob_atual.pergunta.ask()
 
 
-func _on_mob_alternativa_selecionada(resposta_correta: bool) -> void:
-	if resposta_correta and is_instance_valid(mob_atual):
-		await mob_atual.fade_out()
-		mob_atual.queue_free()
-		get_tree().paused = false
-	else:
+func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
+
+	if not alternativa.alternativa_correta:
 		causar_dano.emit(10)
+		return
+
+	await mob_atual.pergunta.fade_out()
+	mob_atual.queue_free()
+	get_tree().paused = false
+	return
 
 
-func _on_boss_responder_pergunta_boss(boss: Node) -> void:
-	boss_atual = boss
-	boss_atual.death_boss.connect(_on_boss_death_boss)
+func _on_boss_iniciar_batalha() -> void:
+	boss.proxima_pergunta()
 
 
 func _on_boss_alternativa_selecionada(resposta_correta: bool) -> void:
-	if resposta_correta and is_instance_valid(boss_atual):
-		boss_atual.proxima_pergunta()
-	else:
-		causar_dano.emit(20)
+	if resposta_correta:
+		boss.proxima_pergunta()
+		return
+	causar_dano.emit(20)
 
 
 #-----------------------------------------------------------------------------
@@ -143,8 +156,7 @@ func _on_player_game_over() -> void:
 	# Garante que as telas de pergunta sejam escondidas se o jogador morrer durante uma.
 	if is_instance_valid(mob_atual):
 		mob_atual.get_node("Pergunta").hide()
-	if is_instance_valid(boss_atual):
-		boss_atual.morte_jogador()
+	boss.morte_jogador()
 
 	if is_instance_valid(game_over_screen):
 		game_over_screen.show()
