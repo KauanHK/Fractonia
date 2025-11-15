@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck8nv5laf4faf"]
 
-[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://root/assets/fonts/PixelOperator8.ttf" id="2_py15m"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://root/assets/font/PixelOperator8.ttf" id="2_py15m"]
 [ext_resource type="Script" uid="uid://dfjcnandsc1j1" path="res://root/scripts/alternativa.gd" id="3_d5h0q"]
 
 [node name="Alternativa" type="Button" groups=["alternativas"]]

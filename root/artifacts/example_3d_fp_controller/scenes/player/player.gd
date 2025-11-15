@@ -1,4 +1,4 @@
-class_name Player
+class_name PlayerAAAA
 extends CharacterBody3D
 
 @export_category("Player")

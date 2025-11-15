@@ -1,20 +1,23 @@
+class_name Boss
 extends Node2D
 
 # Sinais para comunicar com a cena da fase.
 signal deve_fazer_pergunta_boss(boss: Node)
 signal death_boss
 
-@onready var perguntas_container: Node = $Perguntas
+@onready var perguntas: Array[PerguntaUI]
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var indice_pergunta_atual: int = 0
-var perguntas: Array = []
+
+
+func _carregar_perguntas() -> void:
+	for node_pergunta: PerguntaUI in $Perguntas.get_children():
+		perguntas.append(node_pergunta)
+
 
 func _ready() -> void:
-	perguntas = perguntas_container.get_children()
-	# Esconde todas as perguntas no início.
-	for p in perguntas:
-		p.hide()
+	_carregar_perguntas()
 
 
 func proxima_pergunta() -> void:

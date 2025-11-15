@@ -3,6 +3,7 @@ extends Area2D
 
 signal deve_fazer_pergunta(mob: Node)
 
+@onready var pergunta: PerguntaUI = $Pergunta
 @onready var animation_player: AnimationPlayer = $Pergunta/AnimationPlayer
 
 
