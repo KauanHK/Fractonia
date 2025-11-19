@@ -133,6 +133,11 @@ func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
 
 	await mob_atual.pergunta.fade_out()
 	mob_atual.queue_free()
+	
+	SaveManager.dados_do_jogo["moedas"] += 100
+	SaveManager.salvar_jogo()
+	print(SaveManager.dados_do_jogo)
+	
 	get_tree().paused = false
 	return
 

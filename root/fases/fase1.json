@@ -1,19 +1,19 @@
 {
   "texto_perguntas": [
     {
-      "pergunta": "Pergunta 1 da Fase 1",
+      "pergunta": "Lucas, veja a fração 1/2. O número de baixo (2) mostra em quantas partes iguais nós dividimos algo. Ele se chama...",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "Denominador",
+        "Numerador",
+        "Divisor"
       ]
     },
     {
-      "pergunta": "Pergunta 2 da Fase 1",
+      "pergunta": "na mesma fração 1/2, o número de cima (1) mostra com quantas dessas partes nós ficamos. O nome dele é...",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "Numerador",
+        "Denominador",
+        "Divisor"
       ]
     },
     {

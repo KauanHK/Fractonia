@@ -1,19 +1,15 @@
 class_name PerguntaUI
-extends CanvasLayer
+extends Control
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var label_pergunta: Label = $Text
-@onready var alternativas: Array[Alternativa]
+@onready var label_pergunta: Label = %Text
+@onready var alternativas: Array[Alternativa] = _carregar_alternativas()
 
 # Guarda os dados da pergunta atual (texto, alternativas, etc.)
 var dados_atuais: Dictionary
 var indice_correto_atual: int = -1
 
 signal alternativa_selecionada(alternativa: Alternativa)
-
-
-func _ready() -> void:
-	_carregar_alternativas()
 
 
 func configurar(dados_da_pergunta: Dictionary) -> void:
@@ -46,10 +42,11 @@ func fade_out() -> void:
 	await animation_player.animation_finished
 
 
-func _carregar_alternativas() -> void:
-	for node_alternativa: Alternativa in $Alternativas.get_children():
-		alternativas.append(node_alternativa)
-
+func _carregar_alternativas() -> Array[Alternativa]:
+	var nodes_alternativa: Array[Alternativa] = []
+	for node_alternativa: Alternativa in %Alternativas.get_children():
+		nodes_alternativa.append(node_alternativa)
+	return nodes_alternativa
 
 func _definir_texto_pergunta(text: String) -> void:
 	label_pergunta.text = text
