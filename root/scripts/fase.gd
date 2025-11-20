@@ -122,6 +122,9 @@ func _connect_boss_signals() -> void:
 func _on_fazer_pergunta(mob: Mob) -> void:
 	mob_atual = mob
 	get_tree().paused = true
+	print(mob_atual.pergunta.visible)
+	mob_atual.pergunta.visible = true
+	print(mob_atual.pergunta.visible)
 	mob_atual.pergunta.ask()
 
 

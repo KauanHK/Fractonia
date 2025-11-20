@@ -52,4 +52,3 @@ autoplay = "default"
 frame_progress = 0.684797
 
 [node name="Pergunta" parent="." instance=ExtResource("3_drloa")]
-visible = false

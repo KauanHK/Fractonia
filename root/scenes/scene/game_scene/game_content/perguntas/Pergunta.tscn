@@ -1,62 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvs6uimti5hkc"]
+[gd_scene load_steps=3 format=3 uid="uid://cvs6uimti5hkc"]
 
 [ext_resource type="Script" uid="uid://b5g2w1wr3t3mu" path="res://root/scripts/perguntas/pergunta.gd" id="1_x3yau"]
 [ext_resource type="PackedScene" uid="uid://ck8nv5laf4faf" path="res://root/scenes/scene/game_scene/game_content/perguntas/alternativa.tscn" id="2_ydwpk"]
 
-[sub_resource type="Animation" id="Animation_x3yau"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.239216, 0.239216, 0.239216, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_ydwpk"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.705882)]
-}
-
-[sub_resource type="Animation" id="Animation_vlyag"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0.705882), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywq40"]
-_data = {
-&"RESET": SubResource("Animation_x3yau"),
-&"fade_in": SubResource("Animation_ydwpk"),
-&"fade_out": SubResource("Animation_vlyag")
-}
-
 [node name="Pergunta" type="Control"]
-process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,66 +12,49 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3yau")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="PerguntaMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.239216, 0.239216, 0.239216, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ywq40")
-}
+[node name="ColorRect" type="ColorRect" parent="PerguntaMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.470588)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(400, 600)
+[node name="PerguntaContainer" type="VBoxContainer" parent="PerguntaMarginContainer"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 200
+theme_override_constants/separation = 100
 alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="LabelPerguntaContainer" type="VBoxContainer" parent="PerguntaMarginContainer/PerguntaContainer"]
 layout_mode = 2
 
-[node name="Text" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="Text" type="Label" parent="PerguntaMarginContainer/PerguntaContainer/LabelPerguntaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "uytfu"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+text = "Pergunta"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Alternativas" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="AlternativasContainer" type="VBoxContainer" parent="PerguntaMarginContainer/PerguntaContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 16
 
-[node name="Alternativa1" parent="MarginContainer/VBoxContainer/MarginContainer/Alternativas" instance=ExtResource("2_ydwpk")]
-custom_minimum_size = Vector2(0, 80)
+[node name="Alternativa" parent="PerguntaMarginContainer/PerguntaContainer/AlternativasContainer" instance=ExtResource("2_ydwpk")]
 layout_mode = 2
+text = "Alternativa 1"
 
-[node name="Alternativa2" parent="MarginContainer/VBoxContainer/MarginContainer/Alternativas" instance=ExtResource("2_ydwpk")]
-custom_minimum_size = Vector2(0, 80)
+[node name="Alternativa2" parent="PerguntaMarginContainer/PerguntaContainer/AlternativasContainer" instance=ExtResource("2_ydwpk")]
 layout_mode = 2
+text = "Alternativa 2"
 
-[node name="Alternativa3" parent="MarginContainer/VBoxContainer/MarginContainer/Alternativas" instance=ExtResource("2_ydwpk")]
-custom_minimum_size = Vector2(0, 80)
+[node name="Alternativa3" parent="PerguntaMarginContainer/PerguntaContainer/AlternativasContainer" instance=ExtResource("2_ydwpk")]
 layout_mode = 2
+text = "Alternativa 3"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PerguntaMarginContainer"]
+unique_name_in_owner = true

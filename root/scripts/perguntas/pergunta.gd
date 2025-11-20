@@ -1,7 +1,7 @@
 class_name PerguntaUI
 extends Control
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var label_pergunta: Label = %Text
 @onready var alternativas: Array[Alternativa] = _carregar_alternativas()
 
@@ -33,18 +33,20 @@ func ask() -> void:
 
 
 func fade_in() -> void:
+	return
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
 
 
 func fade_out() -> void:
+	return
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 
 
 func _carregar_alternativas() -> Array[Alternativa]:
 	var nodes_alternativa: Array[Alternativa] = []
-	for node_alternativa: Alternativa in %Alternativas.get_children():
+	for node_alternativa: Alternativa in %AlternativasContainer.get_children():
 		nodes_alternativa.append(node_alternativa)
 	return nodes_alternativa
 
