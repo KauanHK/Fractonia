@@ -1,10 +1,11 @@
 class_name Boss
-extends Area2D
+extends Control
 
 # Sinais para comunicar com a cena da fase.
 signal iniciar_batalha
 signal morte
 
+@onready var area_2d: Area2D = $Area2D
 @onready var perguntas: Array[PerguntaUI] = _carregar_perguntas()
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 
 func _connect_signals() -> void:
-	body_entered.connect(_on_body_entered)
+	area_2d.body_entered.connect(_on_body_entered)
 
 
 func _carregar_perguntas() -> Array[PerguntaUI]:
@@ -31,6 +32,7 @@ func proxima_pergunta() -> void:
 
 	if pergunta_atual:
 		await pergunta_atual.fade_out()
+		pergunta_atual.queue_free()
 		indice_pergunta_atual += 1
 	else:
 		indice_pergunta_atual = 0
@@ -56,5 +58,4 @@ func _derrotar_boss() -> void:
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	print('boss colidiud')
 	iniciar_batalha.emit()

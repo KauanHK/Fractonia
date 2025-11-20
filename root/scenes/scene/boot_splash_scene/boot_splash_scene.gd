@@ -1,6 +1,5 @@
 @tool
 extends Control
-## Original File MIT License Copyright (c) 2024 TinyTakinTeller
 
 @export_group("Next Scene")
 @export var scene: SceneManagerEnum.Scene = SceneManagerEnum.Scene.MENU_SCENE
@@ -34,15 +33,16 @@ func _set_boot_splash() -> void:
 
 
 func _on_inicar_fase(id_fase: int) -> void:
-	menu_scene.queue_free()
+	menu_scene.visible = false
 	
 	scene_fase_atual = FASE_SCENE.instantiate()
 	add_child(scene_fase_atual)
 	
-	if scene_fase_atual.player == null:
-		print('WTF')
-		return
+	scene_fase_atual.finalizar_fase.connect(_on_finalizar_fase)
 	scene_fase_atual.set_fase(id_fase)
 	scene_fase_atual.init()
-	
-	scene_pause = PauseMenu.new()
+
+
+func _on_finalizar_fase() -> void:
+	scene_fase_atual.queue_free()
+	menu_scene.visible = true

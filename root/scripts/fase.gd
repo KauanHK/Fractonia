@@ -8,6 +8,7 @@ signal reiniciar_fase
 @onready var player: Player = $Player
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
+@onready var coins_label: CoinsLabel = $CoinsLabel
 
 var num_fase: int = 1
 var dados_fase: Dictionary
@@ -115,16 +116,16 @@ func _connect_mobs_signals() -> void:
 
 func _connect_boss_signals() -> void:
 	boss.iniciar_batalha.connect(_on_boss_iniciar_batalha)
+	boss.morte.connect(_on_boss_death_boss)
 	for pergunta: PerguntaUI in boss.perguntas:
-		pergunta.alternativa_selecionada.connect(_on_boss_alternativa_selecionada)
+		for alternativa: Alternativa in pergunta.alternativas:
+			alternativa.alternativa_selecionada.connect(_on_boss_alternativa_selecionada)
 
 
 func _on_fazer_pergunta(mob: Mob) -> void:
 	mob_atual = mob
 	get_tree().paused = true
-	print(mob_atual.pergunta.visible)
 	mob_atual.pergunta.visible = true
-	print(mob_atual.pergunta.visible)
 	mob_atual.pergunta.ask()
 
 
@@ -139,18 +140,20 @@ func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
 	
 	SaveManager.dados_do_jogo["moedas"] += 100
 	SaveManager.salvar_jogo()
-	print(SaveManager.dados_do_jogo)
+	
+	coins_label.update()
 	
 	get_tree().paused = false
 	return
 
 
 func _on_boss_iniciar_batalha() -> void:
+	get_tree().paused = true
 	boss.proxima_pergunta()
 
 
-func _on_boss_alternativa_selecionada(resposta_correta: bool) -> void:
-	if resposta_correta:
+func _on_boss_alternativa_selecionada(alternativa: Alternativa) -> void:
+	if alternativa.alternativa_correta:
 		boss.proxima_pergunta()
 		return
 	causar_dano.emit(20)
@@ -185,6 +188,6 @@ func _on_boss_death_boss() -> void:
 	if fase_atual <= num_fase:
 		SaveManager.dados_do_jogo["fase_atual"] = num_fase + 1
 		SaveManager.salvar_jogo()
-
+	
+	get_tree().paused = false
 	finalizar_fase.emit()
-	queue_free()

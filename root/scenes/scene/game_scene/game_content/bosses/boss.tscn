@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://c8ljcj6n4o02i" path="res://root/scripts/bosses/boss1.gd" id="1_rdia2"]
 [ext_resource type="PackedScene" uid="uid://cvs6uimti5hkc" path="res://root/scenes/scene/game_scene/game_content/perguntas/Pergunta.tscn" id="3_buxl7"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dplu8"]
+radius = 34.0
+height = 96.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rdia2"]
 atlas = ExtResource("1_dplu8")
 region = Rect2(0, 0, 96, 96)
@@ -33,21 +37,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dplu8"]
-radius = 34.0
-height = 96.0
-
-[node name="Boss1" type="Area2D"]
-collision_mask = 2
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rdia2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_jvuli")
-autoplay = "default"
-frame_progress = 0.0229145
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_dplu8")
 
 [node name="Perguntas" type="Node2D" parent="."]
 process_mode = 3
@@ -60,3 +57,14 @@ visible = false
 
 [node name="Pergunta3" parent="Perguntas" instance=ExtResource("3_buxl7")]
 visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_dplu8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_jvuli")
+autoplay = "default"
+frame_progress = 0.0229145

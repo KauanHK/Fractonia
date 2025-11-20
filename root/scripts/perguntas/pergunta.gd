@@ -1,5 +1,5 @@
 class_name PerguntaUI
-extends Control
+extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var label_pergunta: Label = %Text
@@ -49,6 +49,7 @@ func _carregar_alternativas() -> Array[Alternativa]:
 	for node_alternativa: Alternativa in %AlternativasContainer.get_children():
 		nodes_alternativa.append(node_alternativa)
 	return nodes_alternativa
+
 
 func _definir_texto_pergunta(text: String) -> void:
 	label_pergunta.text = text

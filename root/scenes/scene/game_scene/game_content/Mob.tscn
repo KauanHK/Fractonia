@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://0v7rg3ypwkyt" path="res://root/assets/sprites/frac/frac/Monster.png" id="2_drloa"]
 [ext_resource type="PackedScene" uid="uid://cvs6uimti5hkc" path="res://root/scenes/scene/game_scene/game_content/perguntas/Pergunta.tscn" id="3_drloa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sup6k"]
-size = Vector2(125, 115)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ufksc"]
 atlas = ExtResource("2_drloa")
 region = Rect2(0, 0, 48, 42)
@@ -19,7 +16,7 @@ region = Rect2(48, 0, 48, 42)
 atlas = ExtResource("2_drloa")
 region = Rect2(96, 0, 48, 42)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ex06h"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcaq3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -36,19 +33,30 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Mob" type="Area2D"]
-scale = Vector2(0.2, 0.2)
-collision_mask = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grof1"]
+size = Vector2(125, 115)
+
+[node name="Mob" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ex06h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, 2.5)
-shape = SubResource("RectangleShape2D_sup6k")
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.3, 0.3)
+collision_mask = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_ex06h")
+sprite_frames = SubResource("SpriteFrames_bcaq3")
 autoplay = "default"
-frame_progress = 0.684797
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7.5, 2.5)
+shape = SubResource("RectangleShape2D_grof1")
 
 [node name="Pergunta" parent="." instance=ExtResource("3_drloa")]
+visible = false
