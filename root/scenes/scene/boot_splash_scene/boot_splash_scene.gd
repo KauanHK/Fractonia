@@ -44,5 +44,7 @@ func _on_inicar_fase(id_fase: int) -> void:
 
 
 func _on_finalizar_fase() -> void:
+	get_tree().paused = false
 	scene_fase_atual.queue_free()
 	menu_scene.visible = true
+	menu_scene.save_files_menu.process_mode = Node.PROCESS_MODE_INHERIT
