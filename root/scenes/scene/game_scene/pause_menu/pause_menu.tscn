@@ -56,7 +56,7 @@ theme_override_constants/separation = 32
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Paused"
+text = "Pause"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -73,36 +73,14 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
-focus_neighbor_bottom = NodePath("../OptionsMenuButton")
 theme_override_font_sizes/font_size = 24
 text = "    Continue    "
 label = "MENU_LABEL_CONTINUE"
 padding_spaces = 4
 
-[node name="OptionsMenuButton" parent="MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" instance=ExtResource("1_krneb")]
-unique_name_in_owner = true
-layout_mode = 2
-focus_neighbor_top = NodePath("../ContinueMenuButton")
-focus_neighbor_bottom = NodePath("../LeaveMenuButton")
-theme_override_font_sizes/font_size = 24
-text = "    Options    "
-label = "MENU_OPTIONS"
-padding_spaces = 4
-
-[node name="LeaveMenuButton" parent="MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" instance=ExtResource("1_krneb")]
-unique_name_in_owner = true
-layout_mode = 2
-focus_neighbor_top = NodePath("../OptionsMenuButton")
-focus_neighbor_bottom = NodePath("../QuitMenuButton")
-theme_override_font_sizes/font_size = 24
-text = "    Leave    "
-label = "MENU_LABEL_LEAVE"
-padding_spaces = 4
-
 [node name="QuitMenuButton" parent="MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" instance=ExtResource("1_krneb")]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../LeaveMenuButton")
 focus_neighbor_bottom = NodePath(".")
 theme_override_font_sizes/font_size = 24
 text = "    Quit    "

@@ -78,32 +78,19 @@ func _iniciar_mapa() -> void:
 	boss = _mapa_atual.boss
 
 
-func _on_game_pause_menu_button() -> void:
-	get_tree().paused = true
-
-
-func _on_continue_menu_button() -> void:
+func _on_continue_button() -> void:
 	pause_menu.visible = false
 	get_tree().paused = false
 
 
-func _on_options_menu_button() -> void:
-	pause_menu.visible = false
-
-
-func _on_options_back_menu_button() -> void:
-	pause_menu.visible = true
-
-
-func _on_quit_menu_button() -> void:
-	get_tree().quit()
+func _on_menu_button() -> void:
+	get_tree().paused = false
+	finalizar_fase.emit()
 
 
 func _connect_signals() -> void:
-
-	pause_menu.continue_menu_button.confirmed.connect(_on_continue_menu_button)
-	pause_menu.options_menu_button.confirmed.connect(_on_options_menu_button)
-	pause_menu.quit_menu_button.confirmed.connect(_on_quit_menu_button)
+	pause_menu.continue_button.confirmed.connect(_on_continue_button)
+	pause_menu.menu_button.confirmed.connect(_on_menu_button)
 
 
 func _connect_mobs_signals() -> void:

@@ -28,9 +28,12 @@ func _ready() -> void:
 		return
 
 	_init_buttons()
+	_connect_signals()
 
 
 func _init_buttons() -> void:
+
+	var fase_atual: int = SaveManager.dados_do_jogo["fase_atual"]
 
 	var id_fase: int = 1
 	for phase_button in save_files_v_box_container.get_children():
@@ -38,9 +41,27 @@ func _init_buttons() -> void:
 			continue
 		phase_button.button_down.connect(_on_phase_button_pressed.bind(id_fase))
 		phase_button.text = 'Fase ' + str(id_fase)
+		
+		if id_fase > fase_atual:
+			phase_button.disabled = true
 		id_fase += 1
 
 	control_grab_focus.ready()
+
+
+func _connect_signals() -> void:
+	SaveManager.jogo_salvo.connect(_on_jogo_salvo)
+
+
+func _on_jogo_salvo() -> void:
+
+	var fase_atual: int = SaveManager.dados_do_jogo["fase_atual"]
+	var id_fase: int = 1
+	for phase_button in save_files_v_box_container.get_children():
+		if phase_button is not MenuButtonClass:
+			continue
+		if id_fase > fase_atual:
+			phase_button.disabled = true
 
 
 func _on_phase_button_pressed(id_fase: int) -> void:
