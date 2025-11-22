@@ -62,20 +62,30 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 
-[node name="MenuSaveFile1" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_50r0p")]
+[node name="Fase1Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
 layout_mode = 2
+text = "Fase 1"
+fix_label = true
 
-[node name="MenuSaveFile2" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_50r0p")]
+[node name="Fase2Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
 layout_mode = 2
+text = "Fase 2"
+fix_label = true
 
-[node name="MenuSaveFile3" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_50r0p")]
+[node name="Fase3Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
 layout_mode = 2
+text = "Fase 3"
+fix_label = true
 
-[node name="MenuSaveFile4" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_50r0p")]
+[node name="Fase4Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
 layout_mode = 2
+text = "Fase 4"
+fix_label = true
 
-[node name="MenuSaveFile5" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_50r0p")]
+[node name="Fase5Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
 layout_mode = 2
+text = "Fase 5"
+fix_label = true
 
 [node name="ControlGrabFocus" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("4_3rsfr")]
 unique_name_in_owner = true
