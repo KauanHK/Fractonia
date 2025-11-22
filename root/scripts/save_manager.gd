@@ -6,6 +6,7 @@ const CAMINHO_SAVE: String = "user://progresso.json"
 # Um dicionário que vai guardar todos os dados do jogo enquanto ele está rodando.
 var dados_do_jogo: Dictionary = {}
 
+signal jogo_salvo
 
 func _ready() -> void:
 	carregar_jogo()
@@ -42,3 +43,5 @@ func salvar_jogo() -> void:
 	var json_como_texto: String = JSON.stringify(dados_do_jogo, "\t")
 	arquivo.store_string(json_como_texto)
 	arquivo.close()
+	
+	jogo_salvo.emit()

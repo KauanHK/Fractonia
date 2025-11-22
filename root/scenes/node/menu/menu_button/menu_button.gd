@@ -24,9 +24,10 @@ signal confirmed
 		padding_spaces = value
 		_refresh_label()
 
+@export var fix_label: bool = false
+
 # tracks confirm state if confirm_label is set
 var confirm: bool = false
-
 
 func _ready() -> void:
 	_connect_signals()
@@ -34,7 +35,8 @@ func _ready() -> void:
 
 
 func _refresh_label() -> void:
-	self.text = _get_button_text()
+	if not fix_label:
+		self.text = _get_button_text()
 
 
 func _get_button_text() -> String:

@@ -8,7 +8,6 @@ signal reiniciar_fase
 @onready var player: Player = $Player
 @onready var pause_menu: PauseMenu = $PauseMenu
 @onready var game_over_screen: CanvasLayer = $GameOverScreen
-@onready var coins_label: CoinsLabel = $CoinsLabel
 
 var num_fase: int = 1
 var dados_fase: Dictionary
@@ -141,8 +140,6 @@ func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
 	SaveManager.dados_do_jogo["moedas"] += 100
 	SaveManager.salvar_jogo()
 	
-	coins_label.update()
-	
 	get_tree().paused = false
 	return
 
@@ -159,23 +156,13 @@ func _on_boss_alternativa_selecionada(alternativa: Alternativa) -> void:
 	causar_dano.emit(20)
 
 
-#-----------------------------------------------------------------------------
-# SEÇÃO DE ESTADO DO JOGO (GAME OVER, VITÓRIA)
-#-----------------------------------------------------------------------------
-
 func _on_player_game_over() -> void:
-	# Garante que as telas de pergunta sejam escondidas se o jogador morrer durante uma.
-	if is_instance_valid(mob_atual):
-		mob_atual.get_node("Pergunta").hide()
-	boss.morte_jogador()
-
-	if is_instance_valid(game_over_screen):
-		game_over_screen.show()
+	mob_atual.pergunta.queue_free()
+	game_over_screen.show()
 
 
 func _on_game_over_screen_voltar_menu() -> void:
 	finalizar_fase.emit()
-	queue_free() # Destrói a cena da fase ao voltar para o menu.
 
 
 func _on_game_over_screen_reiniciar_fase() -> void:
@@ -183,7 +170,7 @@ func _on_game_over_screen_reiniciar_fase() -> void:
 
 
 func _on_boss_death_boss() -> void:
-	# Lógica para salvar o progresso e desbloquear a próxima fase.
+
 	var fase_atual = SaveManager.dados_do_jogo.get("fase_atual", 1)
 	if fase_atual <= num_fase:
 		SaveManager.dados_do_jogo["fase_atual"] = num_fase + 1

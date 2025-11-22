@@ -44,10 +44,6 @@ func proxima_pergunta() -> void:
 	_derrotar_boss()
 
 
-func morte_jogador() -> void:
-	pergunta_atual.hide()
-
-
 func _derrotar_boss() -> void:
 	# Toca uma animação de morte.
 	# animation_player.play("morte")

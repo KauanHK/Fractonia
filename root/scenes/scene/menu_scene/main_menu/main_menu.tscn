@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b88kuy67g4l8f"]
+[gd_scene load_steps=6 format=3 uid="uid://b88kuy67g4l8f"]
 
 [ext_resource type="Script" uid="uid://bfr1jpneg2tf3" path="res://root/scenes/scene/menu_scene/main_menu/main_menu.gd" id="1_j1c5u"]
 [ext_resource type="PackedScene" uid="uid://bv7d4vxqjocks" path="res://root/scenes/component/control/control_grab_focus/control_grab_focus.tscn" id="3_jhg6y"]
 [ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="3_u405l"]
 [ext_resource type="PackedScene" uid="uid://cqg5p86vdf7ea" path="res://root/scenes/node/menu/menu_configuration/menu_dropdown_node/menu_dropdown_node.tscn" id="4_0aswu"]
+[ext_resource type="PackedScene" uid="uid://cx8jnhlolloa0" path="res://root/scenes/scene/coins_label.tscn" id="5_43gs1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -126,3 +127,6 @@ mouse_filter = 2
 [node name="MenuDropdownNode" parent="RootMarginContainer/HeaderMarginContainer/HeaderBoxContainer" instance=ExtResource("4_0aswu")]
 layout_mode = 2
 list_cfg = 8
+
+[node name="CoinsLabel" parent="RootMarginContainer/HeaderMarginContainer/HeaderBoxContainer/MenuDropdownNode" instance=ExtResource("5_43gs1")]
+layout_mode = 2

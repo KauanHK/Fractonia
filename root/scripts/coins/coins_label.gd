@@ -5,6 +5,15 @@ extends Control
 
 
 func _ready() -> void:
+	_connect_signals()
+	update()
+
+
+func _connect_signals() -> void:
+	SaveManager.jogo_salvo.connect(_on_jogo_salvo)
+
+
+func _on_jogo_salvo() -> void:
 	update()
 
 

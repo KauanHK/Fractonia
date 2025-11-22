@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6trlabjsdh8i"]
+[gd_scene load_steps=4 format=3 uid="uid://b6trlabjsdh8i"]
 
 [ext_resource type="Script" uid="uid://b7xemmqttoiel" path="res://root/scripts/ui/game_over_screen.gd" id="1_jb1p3"]
-[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://root/assets/fonts/PixelOperator8.ttf" id="1_wojlb"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://root/assets/font/PixelOperator8.ttf" id="1_wojlb"]
+[ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="3_5ediq"]
 
 [node name="GameOverScreen" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_jb1p3")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -15,70 +15,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0.392157)
 
-[node name="CenterContainer" type="Control" parent="."]
-layout_mode = 3
+[node name="GameOverContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="Control" parent="CenterContainer"]
-anchors_preset = 0
-offset_right = 1159.0
-offset_bottom = 656.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/GameOverContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
 
-[node name="GameOverLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 407.0
-offset_top = 39.0
-offset_right = 740.0
-offset_bottom = 83.0
+[node name="TitleContainer" type="VBoxContainer" parent="Background/GameOverContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="Background/GameOverContainer/VBoxContainer/TitleContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_wojlb")
 theme_override_font_sizes/font_size = 43
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 487.0
-offset_top = 167.0
-offset_right = 623.0
-offset_bottom = 183.0
-theme_override_fonts/font = ExtResource("1_wojlb")
-theme_override_font_sizes/font_size = 40
-text = "77"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="ButtonsContainer" type="VBoxContainer" parent="Background/GameOverContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="Control" parent="CenterContainer/VBoxContainer"]
-anchors_preset = 0
-
-[node name="RestartButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 0
-offset_left = 453.0
-offset_top = 285.0
-offset_right = 686.0
-offset_bottom = 372.0
-theme_override_fonts/font = ExtResource("1_wojlb")
+[node name="RestartButton" parent="Background/GameOverContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("3_5ediq")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Reiniciar"
+fix_label = true
 
-[node name="MenuButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 0
-offset_left = 458.0
-offset_top = 439.0
-offset_right = 683.0
-offset_bottom = 524.0
-theme_override_fonts/font = ExtResource("1_wojlb")
+[node name="MenuButton" parent="Background/GameOverContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("3_5ediq")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Menu"
-
-[node name="HighScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 48.0
-offset_right = 73.0
-offset_bottom = 71.0
-
-[connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/RestartButton" to="." method="_on_restart_button_button_down"]
-[connection signal="button_down" from="CenterContainer/VBoxContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_button_down"]
+fix_label = true
