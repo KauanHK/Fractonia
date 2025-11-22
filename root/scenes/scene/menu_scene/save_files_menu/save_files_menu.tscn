@@ -63,6 +63,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 
 [node name="Fase1Button" parent="RootMarginContainer/RootVBoxContainer/SaveFilesMenuScrollContainer/SaveFilesMenuMarginContainer/SaveFilesMarginContainer/SaveFilesVBoxContainer" instance=ExtResource("3_eqnf7")]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 text = "Fase 1"
 fix_label = true

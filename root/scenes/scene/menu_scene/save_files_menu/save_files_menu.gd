@@ -36,12 +36,12 @@ func _init_buttons() -> void:
 	for phase_button in save_files_v_box_container.get_children():
 		if phase_button is not MenuButtonClass:
 			continue
-		phase_button.button_down.connect(_on_save_file_button_pressed)
+		phase_button.button_down.connect(_on_phase_button_pressed.bind(id_fase))
 		phase_button.text = 'Fase ' + str(id_fase)
 		id_fase += 1
 
 	control_grab_focus.ready()
 
 
-func _on_save_file_button_pressed(button_type: MenuSaveFile.ButtonType, id_fase: int) -> void:
-	_action_handler.handle_action("MenuSaveFile.ButtonType", button_type, self, id_fase)
+func _on_phase_button_pressed(id_fase: int) -> void:
+	iniciar_fase.emit(id_fase)
