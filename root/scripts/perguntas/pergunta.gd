@@ -33,13 +33,14 @@ func ask() -> void:
 
 
 func fade_in() -> void:
-	return
 	animation_player.play("fade_in")
 	await animation_player.animation_finished
 
 
 func fade_out() -> void:
-	return
+	label_pergunta.queue_free()
+	for alternativa: Alternativa in alternativas:
+		alternativa.queue_free()
 	animation_player.play("fade_out")
 	await animation_player.animation_finished
 

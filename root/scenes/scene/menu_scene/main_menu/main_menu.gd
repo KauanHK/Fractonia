@@ -8,7 +8,6 @@ const VERSION_PREFIX: String = "v"
 
 @onready var play_menu_button: MenuButtonClass = %PlayMenuButton
 @onready var options_menu_button: MenuButtonClass = %OptionsMenuButton
-@onready var credits_menu_button: MenuButtonClass = %CreditsMenuButton
 @onready var quit_menu_button: MenuButtonClass = %QuitMenuButton
 
 

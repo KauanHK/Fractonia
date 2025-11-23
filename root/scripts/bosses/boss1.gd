@@ -39,6 +39,7 @@ func proxima_pergunta() -> void:
 
 	if indice_pergunta_atual < perguntas.size():
 		pergunta_atual = perguntas[indice_pergunta_atual]
+		pergunta_atual.visible = true
 		pergunta_atual.ask()
 		return
 	_derrotar_boss()

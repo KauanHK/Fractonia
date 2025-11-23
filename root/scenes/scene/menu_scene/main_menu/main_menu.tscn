@@ -93,12 +93,6 @@ layout_mode = 2
 text = "       Options       "
 label = "MENU_OPTIONS"
 
-[node name="CreditsMenuButton" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" instance=ExtResource("3_u405l")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "       Credits       "
-label = "MENU_LABEL_CREDITS"
-
 [node name="QuitMenuButton" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuButtonsVBoxContainer" instance=ExtResource("3_u405l")]
 unique_name_in_owner = true
 layout_mode = 2

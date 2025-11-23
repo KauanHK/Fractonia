@@ -144,7 +144,10 @@ func _on_boss_alternativa_selecionada(alternativa: Alternativa) -> void:
 
 
 func _on_player_game_over() -> void:
-	mob_atual.pergunta.queue_free()
+	if mob_atual:
+		mob_atual.pergunta.queue_free()
+	if boss.pergunta_atual:
+		boss.pergunta_atual.queue_free()
 	game_over_screen.show()
 
 

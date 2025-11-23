@@ -8,7 +8,6 @@ var _current_menu: Control = null
 
 @onready var main_menu: MainMenu = %MainMenu
 @onready var options_menu: OptionsMenu = %OptionsMenu
-@onready var credits_menu: CreditsMenu = %CreditsMenu
 @onready var save_files_menu: SaveFilesMenu = %SaveFilesMenu
 
 @onready var ui_builder: UiBuilder = %UiBuilder
@@ -38,15 +37,10 @@ func _toggle(menu: Control) -> void:
 		_current_menu.visible = false
 	_current_menu = menu
 
-	if _current_menu == credits_menu:
-		credits_menu.credits.reset()
-
 
 func _connect_signals() -> void:
 	options_menu.back_menu_button.confirmed.connect(_toggle.bind(main_menu))
-	credits_menu.back_menu_button.confirmed.connect(_toggle.bind(main_menu))
 	save_files_menu.back_menu_button.confirmed.connect(_toggle.bind(main_menu))
 
 	main_menu.play_menu_button.confirmed.connect(_toggle.bind(save_files_menu))
 	main_menu.options_menu_button.confirmed.connect(_toggle.bind(options_menu))
-	main_menu.credits_menu_button.confirmed.connect(_toggle.bind(credits_menu))
