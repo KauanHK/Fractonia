@@ -1,0 +1,188 @@
+[gd_scene load_steps=18 format=3 uid="uid://d431ngp16x2n"]
+
+[ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="1_0ux8b"]
+[ext_resource type="Script" uid="uid://tnawpi656rth" path="res://root/scripts/ui/vitoria_fase.gd" id="1_gshfn"]
+[ext_resource type="PackedScene" uid="uid://cx8jnhlolloa0" path="res://root/scenes/scene/coins_label.tscn" id="2_5xxga"]
+[ext_resource type="Texture2D" uid="uid://bped01tsjeycn" path="res://root/assets/sprites/coin.png" id="3_ibr5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa3c3"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3bou"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yb41"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fjrk"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67ejv"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgxqh"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awecu"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1jwo"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viyf2"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf2ic"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otrgs"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5aq3"]
+atlas = ExtResource("3_ibr5m")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbpuc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wa3c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3bou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yb41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fjrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67ejv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgxqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awecu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1jwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_viyf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf2ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otrgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5aq3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_gshfn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 0.235294)
+
+[node name="CoinsLabel" parent="." instance=ExtResource("2_5xxga")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 314.0
+offset_top = 313.5
+offset_right = 406.0
+offset_bottom = 313.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -251.5
+offset_right = 176.0
+offset_bottom = 251.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="LabelContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/LabelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Parabéns"
+
+[node name="CoinsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CoinsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "500"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/CoinsContainer"]
+position = Vector2(-49, 28.5)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_bbpuc")
+autoplay = "default"
+frame_progress = 0.0344724
+metadata/_edit_group_ = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="RestartButton" parent="MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("1_0ux8b")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "       Reiniciar       "
+fix_label = true
+
+[node name="MenuButton" parent="MarginContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("1_0ux8b")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "       Menu       "
+fix_label = true

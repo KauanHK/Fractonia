@@ -7,7 +7,8 @@ signal reiniciar_fase
 
 @onready var player: Player = $Player
 @onready var pause_menu: PauseMenu = $PauseMenu
-@onready var game_over_screen: CanvasLayer = $GameOverScreen
+@onready var game_over_screen: GameOverScreen = $GameOverScreen
+@onready var vitoria_fase: VitoriaFase = $VitoriaFase
 
 var num_fase: int = 1
 var dados_fase: Dictionary
@@ -84,13 +85,18 @@ func _on_continue_button() -> void:
 
 
 func _on_menu_button() -> void:
-	get_tree().paused = false
-	finalizar_fase.emit()
+	_finalizar_fase()
 
 
 func _connect_signals() -> void:
 	pause_menu.continue_button.confirmed.connect(_on_continue_button)
 	pause_menu.menu_button.confirmed.connect(_on_menu_button)
+
+	game_over_screen.restart_button.confirmed.connect(_on_restart_button)
+	game_over_screen.menu_button.confirmed.connect(_on_menu_button)
+
+	vitoria_fase.restart_button.confirmed.connect(_on_restart_button)
+	vitoria_fase.menu_button.confirmed.connect(_on_menu_button)
 
 
 func _connect_mobs_signals() -> void:
@@ -151,11 +157,7 @@ func _on_player_game_over() -> void:
 	game_over_screen.show()
 
 
-func _on_game_over_screen_voltar_menu() -> void:
-	finalizar_fase.emit()
-
-
-func _on_game_over_screen_reiniciar_fase() -> void:
+func _on_restart_button() -> void:
 	reiniciar_fase.emit()
 
 
@@ -166,5 +168,9 @@ func _on_boss_death_boss() -> void:
 		SaveManager.dados_do_jogo["fase_atual"] = num_fase + 1
 		SaveManager.salvar_jogo()
 	
+	vitoria_fase.visible = true
+
+
+func _finalizar_fase() -> void:
 	get_tree().paused = false
 	finalizar_fase.emit()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bocixsijt83oi"]
+[gd_scene load_steps=6 format=3 uid="uid://bocixsijt83oi"]
 
 [ext_resource type="Script" uid="uid://bm3xjkawnqydl" path="res://root/scripts/fase.gd" id="1_topbe"]
 [ext_resource type="PackedScene" uid="uid://c86jlwpogfbsp" path="res://root/scenes/scene/game_scene/game_content/player.tscn" id="2_3niwu"]
 [ext_resource type="PackedScene" uid="uid://b6trlabjsdh8i" path="res://root/scenes/scene/game_scene/game_content/ui/GameOverScreen.tscn" id="3_gjtp8"]
 [ext_resource type="PackedScene" uid="uid://bo52utxeld0r0" path="res://root/scenes/scene/game_scene/pause_menu/pause_menu.tscn" id="4_topbe"]
+[ext_resource type="PackedScene" uid="uid://d431ngp16x2n" path="res://root/scenes/scene/game_scene/game_content/ui/vitoria_fase.tscn" id="5_3niwu"]
 
 [node name="Fase" type="Node2D"]
 script = ExtResource("1_topbe")
@@ -19,7 +20,8 @@ visible = false
 process_mode = 2
 visible = false
 
+[node name="VitoriaFase" parent="." instance=ExtResource("5_3niwu")]
+visible = false
+
 [connection signal="causar_dano" from="." to="Player" method="_on_fase_1_causar_dano"]
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
-[connection signal="reiniciar_fase" from="GameOverScreen" to="." method="_on_game_over_screen_reiniciar_fase"]
-[connection signal="voltar_menu" from="GameOverScreen" to="." method="_on_game_over_screen_voltar_menu"]
