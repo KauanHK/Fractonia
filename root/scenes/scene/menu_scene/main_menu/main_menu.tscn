@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b88kuy67g4l8f"]
+[gd_scene load_steps=7 format=3 uid="uid://b88kuy67g4l8f"]
 
 [ext_resource type="Script" uid="uid://bfr1jpneg2tf3" path="res://root/scenes/scene/menu_scene/main_menu/main_menu.gd" id="1_j1c5u"]
+[ext_resource type="Texture2D" uid="uid://dtbe1tivagux3" path="res://root/assets/image/boot_splash/png/boot_splash_2560_1440.png" id="2_84nds"]
 [ext_resource type="PackedScene" uid="uid://bv7d4vxqjocks" path="res://root/scenes/component/control/control_grab_focus/control_grab_focus.tscn" id="3_jhg6y"]
 [ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="3_u405l"]
 [ext_resource type="PackedScene" uid="uid://cqg5p86vdf7ea" path="res://root/scenes/node/menu/menu_configuration/menu_dropdown_node/menu_dropdown_node.tscn" id="4_0aswu"]
@@ -23,6 +24,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="RootMarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_84nds")
 
 [node name="FooterMarginContainer" type="MarginContainer" parent="RootMarginContainer"]
 layout_mode = 2
@@ -68,7 +73,7 @@ theme_override_constants/separation = 32
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
-text = "Game Template"
+text = "Fractonia"
 horizontal_alignment = 1
 vertical_alignment = 1
 

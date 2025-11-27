@@ -1,53 +1,77 @@
 {
   "texto_perguntas": [
 	{
-	  "pergunta": "Pergunta 1 da Fase 1",
+	  "pergunta": "Vamos somar! Quanto é 1/5 + 2/5? (Lembre-se: só somamos os números de cima!)",
 	  "alternativas": [
-		"Alternativa 1.1",
-		"Alternativa 1.2",
-		"Alternativa 1.3"
+		"3/5",
+		"3/10",
+		"2/5"
 	  ]
 	},
 	{
-	  "pergunta": "Pergunta 2 da Fase 1",
+	  "pergunta": "Regra de Ouro: Na soma de frações, o denominador (número de baixo)...",
 	  "alternativas": [
-		"Alternativa 2.1",
-		"Alternativa 2.2",
-		"Alternativa 2.3"
+		"Continua igual",
+		"Também é somado",
+		"Desaparece"
 	  ]
 	},
 	{
-	  "pergunta": "Pergunta 3 da Fase 4",
+	  "pergunta": "Eu comi 2 fatias de pizza e você comeu 3. A pizza tinha 8 fatias. Que fração comemos JUNTOS?",
 	  "alternativas": [
-		"Alternativa 2.1",
-		"Alternativa 2.2",
-		"Alternativa 2.3"
+		"5/8",
+		"6/8",
+		"5/16"
+	  ]
+	},
+	{
+	  "pergunta": "Agora diminuindo: Quanto é 6/7 menos 2/7?",
+	  "alternativas": [
+		"4/7",
+		"8/7",
+		"4/0"
+	  ]
+	},
+	{
+	  "pergunta": "Se eu tenho um copo com 3/4 de água e bebo 1/4, quanto sobra no copo?",
+	  "alternativas": [
+		"2/4",
+		"4/4",
+		"Não sobra nada"
+	  ]
+	},
+	{
+	  "pergunta": "Para somar ou subtrair frações diretamente, o que elas precisam ter IGUAL?",
+	  "alternativas": [
+		"O denominador (baixo)",
+		"O numerador (cima)",
+		"A cor"
 	  ]
 	}
   ],
   "texto_perguntas_boss": [
 	{
-	  "pergunta": "Pergunta 1 do Boss da Fase 1",
+	  "pergunta": "Desafio do Chefe! Calcule a soma tripla: 2/9 + 3/9 + 1/9.",
 	  "alternativas": [
-		"Boss Alternativa 1.1",
-		"Boss Alternativa 1.2",
-		"Boss Alternativa 1.3"
+		"6/9",
+		"6/27",
+		"5/9"
 	  ]
 	},
 	{
-	  "pergunta": "Pergunta 1 do Boss da Fase 1",
+	  "pergunta": "Pegadinha! Eu tinha um chocolate inteiro (5/5) e dei 2/5 para meu irmão. Com quanto fiquei?",
 	  "alternativas": [
-		"Boss Alternativa 1.1",
-		"Boss Alternativa 1.2",
-		"Boss Alternativa 1.3"
+		"3/5",
+		"2/5",
+		"5/5 (Inteiro)"
 	  ]
 	},
 	{
-	  "pergunta": "Pergunta 1 do Boss da Fase 1",
+	  "pergunta": "Para vencer: 1/4 + 1/4 é igual a 2/4. Isso é a mesma coisa que dizer...",
 	  "alternativas": [
-		"Boss Alternativa 1.1",
-		"Boss Alternativa 1.2",
-		"Boss Alternativa 1.3"
+		"Metade (1/2)",
+		"Um inteiro (1)",
+		"Um terço (1/3)"
 	  ]
 	}
   ]

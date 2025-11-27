@@ -1,29 +1,77 @@
 {
   "texto_perguntas": [
     {
-      "pergunta": "Pergunta 1 da Fase 1",
+      "pergunta": "Vamos calcular! Quanto é 1/2 (metade) de 10 moedas de ouro?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "5 moedas",
+        "2 moedas",
+        "10 moedas"
       ]
     },
     {
-      "pergunta": "Pergunta 2 da Fase 1",
+      "pergunta": "Quanto é 1/3 de 9 maçãs? (Dica: Basta dividir 9 por 3)",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "3 maçãs",
+        "6 maçãs",
+        "1 maçã"
+      ]
+    },
+    {
+      "pergunta": "Olhe a fração 5/4. O número de cima é MAIOR que o de baixo. Isso significa que...",
+      "alternativas": [
+        "É mais do que 1 inteiro",
+        "É menos do que 1 inteiro",
+        "É igual a zero"
+      ]
+    },
+    {
+      "pergunta": "Sempre que o Numerador for IGUAL ao Denominador (ex: 7/7), o valor é...",
+      "alternativas": [
+        "Igual a 1 (um inteiro)",
+        "Igual a 7",
+        "Infinito"
+      ]
+    },
+    {
+      "pergunta": "Cálculo de Dano: Se o ataque tira 1/4 de 20 pontos de vida, quanto ele tira?",
+      "alternativas": [
+        "5 pontos",
+        "4 pontos",
+        "10 pontos"
+      ]
+    },
+    {
+      "pergunta": "Simplificando: Dizer que comi 2/4 de um chocolate é a MESMA coisa que dizer que comi...",
+      "alternativas": [
+        "1/2 (Metade)",
+        "1/4 (Um quarto)",
+        "O chocolate todo"
       ]
     }
   ],
   "texto_perguntas_boss": [
     {
-      "pergunta": "Pergunta 1 do Boss da Fase 1",
+      "pergunta": "Desafio do Chefe! Quanto é 1/5 de 50 soldados?",
       "alternativas": [
-        "Boss Alternativa 1.1",
-        "Boss Alternativa 1.2",
-        "Boss Alternativa 1.3"
+        "10 soldados",
+        "5 soldados",
+        "25 soldados"
+      ]
+    },
+    {
+      "pergunta": "Lógica Avançada: Se eu tenho 3 metades de laranja (3/2), na verdade eu tenho...",
+      "alternativas": [
+        "Uma laranja e meia",
+        "Três laranjas",
+        "Duas laranjas"
+      ]
+    },
+    {
+      "pergunta": "ULTIMATO: Você tinha 12 poções mágicas. Usou 1/4 delas para me vencer. Quantas você usou?",
+      "alternativas": [
+        "3 poções",
+        "4 poções",
+        "6 poções"
       ]
     }
   ]

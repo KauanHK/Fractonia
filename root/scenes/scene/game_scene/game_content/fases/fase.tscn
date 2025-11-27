@@ -10,6 +10,7 @@
 script = ExtResource("1_topbe")
 
 [node name="Player" parent="." instance=ExtResource("2_3niwu")]
+z_index = 10
 position = Vector2(124, 235)
 
 [node name="GameOverScreen" parent="." instance=ExtResource("3_gjtp8")]

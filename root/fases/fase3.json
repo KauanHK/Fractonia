@@ -1,53 +1,77 @@
 {
   "texto_perguntas": [
     {
-      "pergunta": "Pergunta 1 da Fase 3",
+      "pergunta": "Imagine duas pizzas iguais. De qual você comeria mais: 1/2 (metade) ou 1/4 (um quarto)?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "1/2 (é maior)",
+        "1/4 (é maior)",
+        "É a mesma quantidade"
       ]
     },
     {
-      "pergunta": "Pergunta 2 da Fase 3",
+      "pergunta": "Regra de Ouro: Quando o número de cima é 1, quanto MAIOR o número de baixo...",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "MENOR é o pedaço",
+        "MAIOR é o pedaço",
+        "O pedaço não muda"
       ]
     },
     {
-      "pergunta": "Pergunta 3 da Fase 3",
+      "pergunta": "Qual fração é MAIOR: 2/5 ou 4/5?",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "4/5",
+        "2/5",
+        "São iguais"
+      ]
+    },
+    {
+      "pergunta": "Se eu tenho uma barra de chocolate dividida em 3 partes e pego as 3 (3/3), eu peguei...",
+      "alternativas": [
+        "A barra inteira (1)",
+        "Metade da barra",
+        "Três barras"
+      ]
+    },
+    {
+      "pergunta": "O que vale mais: ganhar 1/10 de um prêmio ou 1/100 desse mesmo prêmio?",
+      "alternativas": [
+        "1/10 (é maior)",
+        "1/100 (é maior)",
+        "Valem a mesma coisa"
+      ]
+    },
+    {
+      "pergunta": "Se cortarmos uma maçã ao meio (1/2) e outra em quatro partes (1/4), qual pedaço é menor?",
+      "alternativas": [
+        "1/4",
+        "1/2",
+        "Os dois são iguais"
       ]
     }
   ],
   "texto_perguntas_boss": [
     {
-      "pergunta": "Pergunta do boss 1 da Fase 3",
+      "pergunta": "Desafio do Chefe! O Lucas comeu 1/2 da pizza. O monstro comeu 2/4 da mesma pizza. Quem comeu mais?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "Comeram a mesma coisa",
+        "O Lucas (1/2)",
+        "O monstro (2/4)"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 2 da Fase 3",
+      "pergunta": "Qual destas comparações está CERTA?",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "1/3 é maior que 1/5",
+        "1/5 é maior que 1/3",
+        "1/10 é maior que 1/2"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 3 da Fase 3",
+      "pergunta": "Para vencer: A fração 4/8 representa a mesma quantidade que...",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "Metade (1/2)",
+        "Um quarto (1/4)",
+        "Um inteiro (1)"
       ]
     }
   ]

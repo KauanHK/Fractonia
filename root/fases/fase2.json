@@ -1,53 +1,77 @@
 {
   "texto_perguntas": [
     {
-      "pergunta": "Pergunta 1 da Fase 2",
+      "pergunta": "Como nós lemos corretamente a fração 1/5?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "Um quinto",
+        "Um cinco",
+        "Cinco uns"
       ]
     },
     {
-      "pergunta": "Pergunta 2 da Fase 2",
+      "pergunta": "Se dividimos um bolo em 8 fatias iguais, cada fatia representa...",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "Um oitavo (1/8)",
+        "Um oitenta (1/80)",
+        "Um oito (1/8)"
       ]
     },
     {
-      "pergunta": "Pergunta 3 da Fase 2",
+      "pergunta": "Qual destas frações representa 'Três Quartos'?",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "3/4",
+        "4/3",
+        "3/14"
+      ]
+    },
+    {
+      "pergunta": "Olhe para a fração 2/6. O número 6 (denominador) indica que o todo foi dividido em...",
+      "alternativas": [
+        "6 partes iguais",
+        "2 partes iguais",
+        "6 partes diferentes"
+      ]
+    },
+    {
+      "pergunta": "Qual é a maneira certa de ler a fração 1/10?",
+      "alternativas": [
+        "Um décimo",
+        "Um dez",
+        "Um dezavos"
+      ]
+    },
+    {
+      "pergunta": "Quando o número de baixo é maior que 10 (ex: 1/11), geralmente usamos a palavra...",
+      "alternativas": [
+        "Avos (ex: onze avos)",
+        "Décimos (ex: onze décimos)",
+        "Partes (ex: onze partes)"
       ]
     }
   ],
   "texto_perguntas_boss": [
     {
-      "pergunta": "Pergunta do boss 1 da Fase 2",
+      "pergunta": "Desafio do Chefe! Tenho uma caixa com 5 bolas. 2 são vermelhas. Qual fração representa as bolas vermelhas?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "2/5",
+        "5/2",
+        "1/2"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 2 da Fase 2",
+      "pergunta": "Atenção: Qual fração representa exatamente a METADE de alguma coisa?",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "1/2",
+        "1/3",
+        "2/1"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 3 da Fase 2",
+      "pergunta": "Para vencer: Se eu comer 3 fatias de uma pizza de 8 pedaços, que fração da pizza SOBROU?",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "5/8",
+        "3/8",
+        "8/8"
       ]
     }
   ]

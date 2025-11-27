@@ -14,6 +14,7 @@ signal game_over
 func _ready() -> void:
 	if is_instance_valid(health_node) and health_node.has_method("update"):
 		health_node.update()
+	sprite.play("walking")
 
 
 func _physics_process(delta: float) -> void:
@@ -40,7 +41,6 @@ func _process(_delta: float) -> void:
 		sprite.flip_h = true
 	if Input.is_action_just_pressed("move_right"):
 		sprite.flip_h = false
-
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		sprite.play("walking")
 	else:
@@ -48,7 +48,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_fase_1_causar_dano(dano: int) -> void:
-	print('DANO')
 	if is_instance_valid(health_node) and health_node.has_method("causar_dano"):
 		health_node.causar_dano(dano)
 

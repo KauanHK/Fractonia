@@ -71,6 +71,7 @@ script = ExtResource("1_g2els")
 sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"walking"
 autoplay = "walking"
+frame_progress = 0.484547
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.81818)

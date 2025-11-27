@@ -9,7 +9,7 @@
       ]
     },
     {
-      "pergunta": "na mesma fração 1/2, o número de cima (1) mostra com quantas dessas partes nós ficamos. O nome dele é...",
+      "pergunta": "Na mesma fração 1/2, o número de cima (1) mostra com quantas dessas partes nós ficamos. O nome dele é...",
       "alternativas": [
         "Numerador",
         "Denominador",
@@ -17,37 +17,61 @@
       ]
     },
     {
-      "pergunta": "Pergunta 3 da Fase 1",
+      "pergunta": "Se dividirmos uma pizza em 4 pedaços iguais e comermos 1, qual fração representa o pedaço que comemos?",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "1/4",
+        "4/1",
+        "1/2"
+      ]
+    },
+    {
+      "pergunta": "O que o traço horizontal no meio da fração indica?",
+      "alternativas": [
+        "Uma divisão",
+        "Uma soma",
+        "Uma multiplicação"
+      ]
+    },
+    {
+      "pergunta": "Como lemos a fração 1/3?",
+      "alternativas": [
+        "Um terço",
+        "Um três",
+        "Um triplo"
+      ]
+    },
+    {
+      "pergunta": "Se eu tenho uma barra de chocolate inteira, sem dividir, podemos dizer que tenho...",
+      "alternativas": [
+        "1 inteiro",
+        "1 meio",
+        "1 fracionado"
       ]
     }
   ],
   "texto_perguntas_boss": [
     {
-      "pergunta": "Pergunta do boss 1 da Fase 1",
+      "pergunta": "Desafio do Chefe! Na fração 3/5, qual número é o Numerador?",
       "alternativas": [
-        "Alternativa 1.1",
-        "Alternativa 1.2",
-        "Alternativa 1.3"
+        "3",
+        "5",
+        "8"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 2 da Fase 1",
+      "pergunta": "Ainda sobre a fração 3/5. O número 5 é o...",
       "alternativas": [
-        "Alternativa 2.1",
-        "Alternativa 2.2",
-        "Alternativa 2.3"
+        "Denominador",
+        "Numerador",
+        "Resto"
       ]
     },
     {
-      "pergunta": "Pergunta do boss 3 da Fase 1",
+      "pergunta": "Para vencer: Se o numerador e o denominador são iguais (ex: 4/4), isso vale o mesmo que...",
       "alternativas": [
-        "Alternativa 3.1",
-        "Alternativa 3.2",
-        "Alternativa 3.3"
+        "1 (um inteiro)",
+        "0 (zero)",
+        "4 (quatro)"
       ]
     }
   ]
