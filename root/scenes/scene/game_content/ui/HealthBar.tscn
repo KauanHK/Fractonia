@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhpiih4l0k602"]
+
+[ext_resource type="Script" uid="uid://gsi6cnbmkcfd" path="res://root/scripts/health_bar.gd" id="1_tmb1u"]
+
+[node name="Health" type="CanvasLayer"]
+script = ExtResource("1_tmb1u")
+maxHealth = 100
+health = 100
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_right = 46.0
+offset_bottom = 27.0
+grow_horizontal = 2

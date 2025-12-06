@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlvmpie5n4eef"]
+
+[ext_resource type="Script" uid="uid://cqeqn6f0nnkqe" path="res://root/scripts/menu.gd" id="1_yqeox"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_yqeox")
+
+[node name="Fase1" type="Button" parent="."]
+offset_left = 457.0
+offset_top = 187.0
+offset_right = 652.0
+offset_bottom = 243.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Fase 1"
+
+[node name="Fase2" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 267.0
+offset_right = 654.0
+offset_bottom = 323.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Fase 2"
+
+[node name="Fase3" type="Button" parent="."]
+offset_left = 461.0
+offset_top = 347.0
+offset_right = 656.0
+offset_bottom = 403.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Fase 3"
+
+[node name="Fase4" type="Button" parent="."]
+offset_left = 466.0
+offset_top = 436.0
+offset_right = 661.0
+offset_bottom = 492.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Fase 4"
+
+[node name="Fase5" type="Button" parent="."]
+offset_left = 468.0
+offset_top = 526.0
+offset_right = 663.0
+offset_bottom = 582.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Fase 5"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Fase1" to="." method="_on_fase_1_pressed"]
+[connection signal="pressed" from="Fase2" to="." method="_on_fase_2_pressed"]
+[connection signal="pressed" from="Fase3" to="." method="_on_fase_3_pressed"]
+[connection signal="pressed" from="Fase4" to="." method="_on_fase_4_pressed"]
+[connection signal="pressed" from="Fase5" to="." method="_on_fase_5_pressed"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6trlabjsdh8i"]
+
+[ext_resource type="Script" uid="uid://b7xemmqttoiel" path="res://root/scripts/ui/game_over_screen.gd" id="1_jb1p3"]
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://root/assets/font/PixelOperator8.ttf" id="1_wojlb"]
+[ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="3_5ediq"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_jb1p3")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.392157)
+
+[node name="GameOverContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/GameOverContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="TitleContainer" type="VBoxContainer" parent="Background/GameOverContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="Background/GameOverContainer/VBoxContainer/TitleContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wojlb")
+theme_override_font_sizes/font_size = 43
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="Background/GameOverContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="RestartButton" parent="Background/GameOverContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("3_5ediq")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reiniciar"
+fix_label = true
+
+[node name="MenuButton" parent="Background/GameOverContainer/VBoxContainer/ButtonsContainer" instance=ExtResource("3_5ediq")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menu"
+fix_label = true
