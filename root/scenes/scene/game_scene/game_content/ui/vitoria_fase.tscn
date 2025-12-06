@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://d431ngp16x2n"]
+[gd_scene load_steps=17 format=3 uid="uid://d431ngp16x2n"]
 
 [ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="1_0ux8b"]
 [ext_resource type="Script" uid="uid://tnawpi656rth" path="res://root/scripts/ui/vitoria_fase.gd" id="1_gshfn"]
-[ext_resource type="PackedScene" uid="uid://cx8jnhlolloa0" path="res://root/scenes/scene/coins_label.tscn" id="2_5xxga"]
 [ext_resource type="Texture2D" uid="uid://bped01tsjeycn" path="res://root/assets/sprites/coin.png" id="3_ibr5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wa3c3"]
@@ -108,17 +107,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 1, 0, 0.235294)
-
-[node name="CoinsLabel" parent="." instance=ExtResource("2_5xxga")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 314.0
-offset_top = 313.5
-offset_right = 406.0
-offset_bottom = 313.5
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 8

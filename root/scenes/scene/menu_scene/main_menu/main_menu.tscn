@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b88kuy67g4l8f"]
 
 [ext_resource type="Script" uid="uid://bfr1jpneg2tf3" path="res://root/scenes/scene/menu_scene/main_menu/main_menu.gd" id="1_j1c5u"]
-[ext_resource type="Texture2D" uid="uid://dtbe1tivagux3" path="res://root/assets/image/boot_splash/png/boot_splash_2560_1440.png" id="2_84nds"]
+[ext_resource type="Texture2D" uid="uid://cpaid838k5p5n" path="res://root/assets/image/fractonia.png" id="2_84nds"]
 [ext_resource type="PackedScene" uid="uid://bv7d4vxqjocks" path="res://root/scenes/component/control/control_grab_focus/control_grab_focus.tscn" id="3_jhg6y"]
 [ext_resource type="PackedScene" uid="uid://k5xt8llrybgm" path="res://root/scenes/node/menu/menu_button/menu_button.tscn" id="3_u405l"]
 [ext_resource type="PackedScene" uid="uid://cqg5p86vdf7ea" path="res://root/scenes/node/menu/menu_configuration/menu_dropdown_node/menu_dropdown_node.tscn" id="4_0aswu"]
@@ -68,14 +68,6 @@ theme_override_constants/separation = 0
 [node name="MainMenuLabelsVBoxContainer" type="VBoxContainer" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
-
-[node name="TitleLabel" type="Label" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Fractonia"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="SeparationMarginContainer" type="MarginContainer" parent="RootMarginContainer/AspectRatioContainer/CenterContainer/MainMenuMarginContainer/MainMenuVBoxContainer/MainMenuLabelsVBoxContainer"]
 layout_mode = 2

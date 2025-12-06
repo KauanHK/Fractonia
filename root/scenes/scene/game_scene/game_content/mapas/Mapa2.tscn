@@ -26,8 +26,11 @@ texture = ExtResource("2_mm21p")
 8:0/0 = 0
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -6.47491, 8, -4.31661, 8, 0.539577, -8, -1.43887)
 11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.85618, 8, -3.95689, 8, 0.539577, -8, -1.43887)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0 = 0
@@ -187,22 +190,22 @@ offset_right = 404.0
 offset_bottom = 462.0
 
 [node name="Mob4" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1480.0
-offset_top = 234.0
-offset_right = 1480.0
-offset_bottom = 234.0
+offset_left = 1599.0
+offset_top = 324.0
+offset_right = 1599.0
+offset_bottom = 324.0
 
 [node name="Mob5" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1310.0
-offset_top = 266.0
-offset_right = 1310.0
-offset_bottom = 266.0
+offset_left = 1420.0
+offset_top = 303.0
+offset_right = 1420.0
+offset_bottom = 303.0
 
 [node name="Mob6" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1172.0
-offset_top = 287.0
-offset_right = 1172.0
-offset_bottom = 287.0
+offset_left = 1197.0
+offset_top = 353.0
+offset_right = 1197.0
+offset_bottom = 353.0
 
 [node name="Mob2" parent="Mobs" instance=ExtResource("4_lqorc")]
 offset_left = 1060.0

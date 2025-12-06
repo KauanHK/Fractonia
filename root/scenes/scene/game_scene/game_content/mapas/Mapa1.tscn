@@ -205,10 +205,10 @@ offset_right = 1400.0
 offset_bottom = 307.0
 
 [node name="Mob2" parent="Mobs" instance=ExtResource("2_lecm6")]
-offset_left = 1168.0
-offset_top = 336.0
-offset_right = 1168.0
-offset_bottom = 336.0
+offset_left = 1181.0
+offset_top = 364.0
+offset_right = 1181.0
+offset_bottom = 364.0
 
 [node name="Mob3" parent="Mobs" instance=ExtResource("2_lecm6")]
 offset_left = 805.0

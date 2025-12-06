@@ -13,7 +13,6 @@ const VERSION_PREFIX: String = "v"
 
 func _ready() -> void:
 	_connect_signals()
-	_refresh_labels()
 
 	if OS.has_feature("web"):
 		quit_menu_button.visible = false
@@ -21,18 +20,9 @@ func _ready() -> void:
 	LogWrapper.debug(self, "Scene ready.")
 
 
-func _refresh_labels() -> void:
-	title_label.text = TranslationServerWrapper.translate(Configuration.GAME_TITLE)
-
 
 func _connect_signals() -> void:
-	SignalBus.language_changed.connect(_on_language_changed)
-	
 	quit_menu_button.confirmed.connect(_on_quit_button)
-
-
-func _on_language_changed(_locale: String) -> void:
-	_refresh_labels()
 
 
 func _on_quit_button() -> void:

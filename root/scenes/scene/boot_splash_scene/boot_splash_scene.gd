@@ -70,3 +70,5 @@ func _on_finalizar_fase() -> void:
 	_scene_fase_atual.queue_free()
 	menu_scene.visible = true
 	menu_scene.save_files_menu.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	menu_scene.save_files_menu.init_buttons()

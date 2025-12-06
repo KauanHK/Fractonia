@@ -27,11 +27,11 @@ func _ready() -> void:
 		LogWrapper.debug(self, "Save File UI packed scene not set.")
 		return
 
-	_init_buttons()
+	init_buttons()
 	_connect_signals()
 
 
-func _init_buttons() -> void:
+func init_buttons() -> void:
 
 	var fase_atual: int = SaveManager.dados_do_jogo["fase_atual"]
 
@@ -42,8 +42,7 @@ func _init_buttons() -> void:
 		phase_button.button_down.connect(_on_phase_button_pressed.bind(id_fase))
 		phase_button.text = 'Fase ' + str(id_fase)
 		
-		if id_fase > fase_atual:
-			phase_button.disabled = true
+		phase_button.disabled = id_fase > fase_atual
 		id_fase += 1
 
 	control_grab_focus.ready()
