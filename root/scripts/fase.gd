@@ -1,6 +1,8 @@
 class_name Fase
 extends Node2D
 
+@export var dano_mob: int = 20
+
 signal causar_dano(quantidade: int)
 signal finalizar_fase
 signal reiniciar_fase
@@ -124,7 +126,7 @@ func _on_fazer_pergunta(mob: Mob) -> void:
 func _on_alternativa_selecionada(alternativa: Alternativa) -> void:
 
 	if not alternativa.alternativa_correta:
-		causar_dano.emit(10)
+		causar_dano.emit(dano_mob)
 		return
 
 	await mob_atual.pergunta.fade_out()
