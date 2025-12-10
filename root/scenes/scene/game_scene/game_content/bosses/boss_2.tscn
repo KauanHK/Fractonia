@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdxqukuvmw2hs"]
+
+[ext_resource type="Script" uid="uid://c8ljcj6n4o02i" path="res://root/scripts/bosses/boss1.gd" id="1_8a4jn"]
+[ext_resource type="PackedScene" uid="uid://cvs6uimti5hkc" path="res://root/scenes/scene/game_scene/game_content/perguntas/Pergunta.tscn" id="2_ppcup"]
+[ext_resource type="Texture2D" uid="uid://ccpmtm42ht1k" path="res://root/assets/sprites/frac/frac/$BigMonster1.png" id="3_71ge4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dplu8"]
+radius = 34.0
+height = 96.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1car"]
+atlas = ExtResource("3_71ge4")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmyo6"]
+atlas = ExtResource("3_71ge4")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fbhl"]
+atlas = ExtResource("3_71ge4")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jvuli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1car")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmyo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fbhl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8a4jn")
+
+[node name="Perguntas" type="Node2D" parent="."]
+process_mode = 3
+
+[node name="Pergunta1" parent="Perguntas" instance=ExtResource("2_ppcup")]
+visible = false
+
+[node name="Pergunta2" parent="Perguntas" instance=ExtResource("2_ppcup")]
+visible = false
+
+[node name="Pergunta3" parent="Perguntas" instance=ExtResource("2_ppcup")]
+visible = false
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_dplu8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+sprite_frames = SubResource("SpriteFrames_jvuli")
+autoplay = "default"
+frame_progress = 0.116835

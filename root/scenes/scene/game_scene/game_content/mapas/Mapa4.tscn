@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ovhc3f3t2g13" path="res://root/scripts/mapas/mapa.gd" id="1_6itt8"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_pvg3l"]
-[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_scene/game_content/bosses/boss.tscn" id="3_xh2r8"]
+[ext_resource type="PackedScene" uid="uid://b2negdpk4hjm3" path="res://root/scenes/scene/game_scene/game_content/bosses/boss_4.tscn" id="4_6itt8"]
 [ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="4_tpcv0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6itt8"]
@@ -176,12 +176,6 @@ tile_set = SubResource("TileSet_pvg3l")
 [node name="PlayerStart" type="Marker2D" parent="."]
 position = Vector2(246, 421)
 
-[node name="Boss" parent="." instance=ExtResource("3_xh2r8")]
-offset_left = 1949.0
-offset_top = 368.0
-offset_right = 1949.0
-offset_bottom = 368.0
-
 [node name="Mobs" type="Node2D" parent="."]
 process_mode = 3
 
@@ -220,3 +214,9 @@ offset_left = 1510.0
 offset_top = 279.0
 offset_right = 1510.0
 offset_bottom = 279.0
+
+[node name="Boss" parent="." instance=ExtResource("4_6itt8")]
+offset_left = 2045.0
+offset_top = 376.0
+offset_right = 2045.0
+offset_bottom = 376.0

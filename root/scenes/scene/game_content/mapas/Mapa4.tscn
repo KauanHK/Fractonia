@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ovhc3f3t2g13" path="res://root/scripts/mapas/mapa.gd" id="1_6itt8"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_pvg3l"]
-[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_content/bosses/boss.tscn" id="3_xh2r8"]
-[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_content/Mob.tscn" id="4_tpcv0"]
+[ext_resource type="PackedScene" uid="uid://jom8n5j74lep" path="res://root/scenes/scene/game_scene/game_content/bosses/boss_1.tscn" id="3_xh2r8"]
+[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="4_tpcv0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6itt8"]
 texture = ExtResource("2_pvg3l")
