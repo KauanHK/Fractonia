@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ovhc3f3t2g13" path="res://root/scripts/mapas/mapa.gd" id="1_6itt8"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_pvg3l"]
+[ext_resource type="PackedScene" uid="uid://818r23lmmmn1" path="res://root/scenes/scene/game_scene/game_content/mobs/mob_4.tscn" id="3_6itt8"]
 [ext_resource type="PackedScene" uid="uid://b2negdpk4hjm3" path="res://root/scenes/scene/game_scene/game_content/bosses/boss_4.tscn" id="4_6itt8"]
-[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="4_tpcv0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6itt8"]
 texture = ExtResource("2_pvg3l")
@@ -179,41 +179,41 @@ position = Vector2(246, 421)
 [node name="Mobs" type="Node2D" parent="."]
 process_mode = 3
 
-[node name="Mob" parent="Mobs" instance=ExtResource("4_tpcv0")]
-offset_left = 404.0
-offset_top = 462.0
-offset_right = 404.0
-offset_bottom = 462.0
+[node name="Mob" parent="Mobs" instance=ExtResource("3_6itt8")]
+offset_left = 406.0
+offset_top = 460.0
+offset_right = 406.0
+offset_bottom = 460.0
 
-[node name="Mob2" parent="Mobs" instance=ExtResource("4_tpcv0")]
-offset_left = 948.0
-offset_top = 552.0
-offset_right = 948.0
-offset_bottom = 552.0
-
-[node name="Mob3" parent="Mobs" instance=ExtResource("4_tpcv0")]
+[node name="Mob2" parent="Mobs" instance=ExtResource("3_6itt8")]
 offset_left = 763.0
 offset_top = 365.0
 offset_right = 763.0
 offset_bottom = 365.0
 
-[node name="Mob4" parent="Mobs" instance=ExtResource("4_tpcv0")]
-offset_left = 1168.0
-offset_top = 521.0
-offset_right = 1168.0
-offset_bottom = 521.0
+[node name="Mob3" parent="Mobs" instance=ExtResource("3_6itt8")]
+offset_left = 950.0
+offset_top = 559.0
+offset_right = 950.0
+offset_bottom = 559.0
 
-[node name="Mob5" parent="Mobs" instance=ExtResource("4_tpcv0")]
-offset_left = 1245.0
-offset_top = 349.0
-offset_right = 1245.0
-offset_bottom = 349.0
+[node name="Mob14" parent="Mobs" instance=ExtResource("3_6itt8")]
+offset_left = 1167.0
+offset_top = 526.0
+offset_right = 1167.0
+offset_bottom = 526.0
 
-[node name="Mob6" parent="Mobs" instance=ExtResource("4_tpcv0")]
-offset_left = 1510.0
-offset_top = 279.0
-offset_right = 1510.0
-offset_bottom = 279.0
+[node name="Mob5" parent="Mobs" instance=ExtResource("3_6itt8")]
+offset_left = 1244.0
+offset_top = 352.0
+offset_right = 1244.0
+offset_bottom = 352.0
+
+[node name="Mob6" parent="Mobs" instance=ExtResource("3_6itt8")]
+offset_left = 1512.0
+offset_top = 287.0
+offset_right = 1512.0
+offset_bottom = 287.0
 
 [node name="Boss" parent="." instance=ExtResource("4_6itt8")]
 offset_left = 2045.0

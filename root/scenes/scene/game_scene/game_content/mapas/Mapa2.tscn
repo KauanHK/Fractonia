@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ovhc3f3t2g13" path="res://root/scripts/mapas/mapa.gd" id="1_ci60t"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://root/assets/sprites/world_tileset.png" id="2_mm21p"]
+[ext_resource type="PackedScene" uid="uid://bx7eolvm41fij" path="res://root/scenes/scene/game_scene/game_content/mobs/mob_2.tscn" id="3_ci60t"]
 [ext_resource type="PackedScene" uid="uid://bdxqukuvmw2hs" path="res://root/scenes/scene/game_scene/game_content/bosses/boss_2.tscn" id="4_ci60t"]
-[ext_resource type="PackedScene" uid="uid://bpyl8eaf2x0uh" path="res://root/scenes/scene/game_scene/game_content/Mob.tscn" id="4_lqorc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ci60t"]
 texture = ExtResource("2_mm21p")
@@ -177,41 +177,71 @@ position = Vector2(246, 421)
 [node name="Mobs" type="Node2D" parent="."]
 process_mode = 3
 
-[node name="Mob" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 404.0
-offset_top = 462.0
-offset_right = 404.0
-offset_bottom = 462.0
+[node name="Mob" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 406.0
+offset_top = 463.0
+offset_right = 406.0
+offset_bottom = 463.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="Mob4" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1594.0
-offset_top = 450.0
-offset_right = 1594.0
-offset_bottom = 450.0
-
-[node name="Mob5" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1466.0
-offset_top = 494.0
-offset_right = 1466.0
-offset_bottom = 494.0
-
-[node name="Mob6" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1324.0
-offset_top = 574.0
-offset_right = 1324.0
-offset_bottom = 574.0
-
-[node name="Mob2" parent="Mobs" instance=ExtResource("4_lqorc")]
-offset_left = 1126.0
-offset_top = 461.0
-offset_right = 1126.0
-offset_bottom = 461.0
-
-[node name="Mob3" parent="Mobs" instance=ExtResource("4_lqorc")]
+[node name="Mob2" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 892.0
 offset_top = 496.0
 offset_right = 892.0
 offset_bottom = 496.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Mob3" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1128.0
+offset_top = 460.0
+offset_right = 1128.0
+offset_bottom = 460.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Mob4" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1329.0
+offset_top = 572.0
+offset_right = 1329.0
+offset_bottom = 572.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Mob5" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1467.0
+offset_top = 496.0
+offset_right = 1467.0
+offset_bottom = 496.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Mob6" parent="Mobs" instance=ExtResource("3_ci60t")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1597.0
+offset_top = 449.0
+offset_right = 1597.0
+offset_bottom = 449.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Boss" parent="." instance=ExtResource("4_ci60t")]
 offset_left = 1825.0
